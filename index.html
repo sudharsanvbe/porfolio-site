@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+    <title>Krshay Venkatesan — Engineering · Motion · Systems</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!--
+      NOTE: this page intentionally does NOT load styles.css.
+      styles.css has three stacked :root blocks and four repeated
+      "FINAL HERO OVERRIDE" sections all fighting over the same
+      .hero / .node.n1-n7 / .blueprint-container rules with !important —
+      that conflict is what was smashing the headline into the cards.
+      This page uses its own scoped "home-*" classes below so it can't
+      collide with whatever styles.css does on your other pages.
+    -->
+    <style>
+        :root {
+            --ink: #0b1728;
+            --blue: #1547a8;
+            --blue2: #2b6bd8;
+            --paper: #f7f8f4;
+            --orange: #e85a20;
+            --muted: #66758a;
+            --line: #c7d3e2;
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+            --hand: 'Caveat', cursive;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            /* lock the whole page — no scroll */
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ===========================================================
+           PAGE — three fixed-height bars + two flexible zones,
+           adding up to exactly 100vh, no overflow anywhere
+        =========================================================== */
+
+        .home-view {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---------- 1. RESUME STRIP ---------- */
+
+        .home-resume {
+            flex: 0 0 clamp(22px, 2.6vh, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            gap: 8px;
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            transition: background .2s ease;
+        }
+
+        .home-resume:hover {
+            background: #eef4ff;
+        }
+
+        .home-resume span {
+            color: var(--orange);
+        }
+
+        /* ---------- 2. HERO ---------- */
+
+        .home-hero {
+            position: relative;
+            flex: 1.55 1 0;
+            min-height: 0;
+            overflow: hidden;
+            background: #05080b;
+            color: #fff;
+        }
+
+        .home-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(0, 0, 0, .32) 0%, rgba(0, 0, 0, .05) 42%, rgba(0, 0, 0, .55) 100%),
+                url("assets/hero-motion.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+            background-size: 46px 46px;
+            mask-image: linear-gradient(90deg, #000, transparent 90%);
+        }
+
+        /* brand mark, top-left of hero */
+
+        .home-brand {
+            position: absolute;
+            top: clamp(10px, 1.8vh, 18px);
+            left: clamp(18px, 2vw, 28px);
+            z-index: 5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(20px, 2vw, 28px);
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            color: #fff;
+        }
+
+        /* vertical nav, left side of hero */
+
+        .home-nav {
+            position: absolute;
+            left: clamp(18px, 2vw, 28px);
+            top: clamp(50px, 8vh, 68px);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.3vh, 13px);
+        }
+
+        .home-nav a {
+            position: relative;
+            padding-left: 12px;
+            text-align: right;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(8px, .78vw, 9.5px);
+            font-weight: 500;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .58);
+            transition: color .2s ease, transform .2s ease;
+        }
+
+        .home-nav a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: transparent;
+            transform: translateY(-50%);
+        }
+
+        .home-nav a:hover {
+            color: #fff;
+            transform: translateX(2px);
+        }
+
+        .home-nav a.active {
+            color: #fff;
+        }
+
+        .home-nav a.active::before {
+            background: var(--orange);
+        }
+
+        /* name + tagline, centered in the hero's right-of-photo space */
+
+        .home-hero-content {
+            position: absolute;
+            z-index: 4;
+            left: clamp(30%, 33vw, 36%);
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(46vw, 640px);
+        }
+
+        .home-hero-content h1 {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            line-height: .9;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: clamp(2.1rem, 4.6vw, 4.6rem);
+            text-shadow: 0 3px 22px rgba(0, 0, 0, .35);
+        }
+
+        .home-hero-rule {
+            width: 100%;
+            max-width: 420px;
+            height: 1px;
+            margin: clamp(12px, 1.8vh, 20px) 0 0;
+            background: rgba(255, 255, 255, .78);
+        }
+
+        .home-hero-tagline {
+            margin-top: clamp(12px, 1.8vh, 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-family: var(--mono);
+            font-size: clamp(9px, .95vw, 13px);
+            font-weight: 500;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .home-hero-tagline b {
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: .28em;
+        }
+
+        /* knee X-ray art on the right — nods to the reference composition */
+
+        .home-hero-side {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20vw;
+            z-index: 3;
+            background-size: contain;
+            background-position: right center;
+            background-repeat: no-repeat;
+            opacity: .9;
+        }
+
+        /* ---------- 3. MARQUEE ---------- */
+
+        .home-marquee {
+            flex: 0 0 clamp(30px, 3.4vh, 37px);
+            overflow: hidden;
+            white-space: nowrap;
+            background: #00297c;
+            border-block: 1px solid #123b8c;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-marquee-track {
+            display: inline-flex;
+            gap: 30px;
+            padding-left: 30px;
+            font-family: var(--mono);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #fff;
+            animation: home-marquee 24s linear infinite;
+        }
+
+        @keyframes home-marquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ---------- 4. SYSTEMS GRID ---------- */
+
+        .home-systems {
+            flex: 1 1 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            padding: clamp(10px, 1.6vh, 18px) clamp(20px, 2.8vw, 40px);
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(rgba(21, 71, 168, .05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 71, 168, .05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .home-systems-head {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: clamp(8px, 1.4vh, 14px);
+        }
+
+        .home-systems-head h2 {
+            font-family: var(--display);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-size: clamp(1rem, 1.6vw, 1.5rem);
+        }
+
+        .home-systems-head h2 b {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .home-systems-head p {
+            max-width: 360px;
+            font-family: var(--mono);
+            font-size: 9px;
+            line-height: 1.6;
+            letter-spacing: .02em;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .home-systems-grid {
+            flex: 1 1 0;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .home-card {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 11px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .home-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--blue);
+            box-shadow: 0 12px 26px rgba(16, 47, 103, .12);
+        }
+
+        .home-card-num {
+            font-family: var(--mono);
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            color: var(--orange);
+        }
+
+        .home-card-img {
+            flex: 1 1 0;
+            min-height: 0;
+            margin: 6px 0 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(150deg, #f2f6fb, #e7eff8);
+            border: 1px solid rgba(21, 71, 168, .12);
+            border-radius: 7px;
+        }
+
+        .home-card-img img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+        }
+
+        .home-card-cat {
+            display: block;
+            font-family: var(--mono);
+            font-size: 6px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 3px;
+        }
+
+        .home-card h3 {
+            font-family: var(--display);
+            font-weight: 700;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-size: clamp(9.5px, .95vw, 12px);
+            line-height: 1.15;
+        }
+
+        .home-card p {
+            display: none;
+            /* hidden by default to guarantee no-overflow */
+            font-size: 8px;
+            line-height: 1.35;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* show the description only when there is enough vertical room */
+        @media (min-height: 760px) {
+            .home-card p {
+                display: block;
+            }
+        }
+
+        /* ===========================================================
+           RESPONSIVE — below ~860px wide, a locked no-scroll 7-column
+           grid stops being legible, so this page switches to a normal
+           scrolling layout instead of shrinking text unreadably small.
+        =========================================================== */
+
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .home-view {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .home-hero {
+                flex: none;
+                height: 78vh;
+            }
+
+            .home-hero-content {
+                left: 8%;
+                width: 84%;
+                top: 40%;
+            }
+
+            .home-hero-side {
+                display: none;
+            }
+
+            .home-nav {
+                display: none;
+            }
+
+            .home-systems {
+                flex: none;
+                padding: 26px 20px 40px;
+            }
+
+            .home-systems-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .home-card {
+                min-height: 190px;
+            }
+
+            .home-card p {
+                display: block !important;
+            }
+
+            .home-systems-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .home-systems-head p {
+                text-align: left;
+            }
+        }
+
+        /* =========================================================
+   HOME SYSTEM CARD — HOVER ZOOM PREVIEW
+========================================================= */
+
+        .home-card {
+            cursor: crosshair;
+        }
+
+        /* Image zoom area */
+        .home-card-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-card-img img {
+            transition:
+                transform .45s cubic-bezier(.2, .8, .2, 1),
+                filter .35s ease;
+            transform-origin: center center;
+        }
+
+        /* Zoom image when hovering card */
+        .home-card:hover .home-card-img img {
+            transform: scale(1.18);
+        }
+
+        /* Image area becomes slightly highlighted */
+        .home-card:hover .home-card-img {
+            border-color: rgba(21, 71, 168, .45);
+        }
+
+
+        /* =========================================================
+   FLOATING ZOOM PANEL
+========================================================= */
+
+        .home-image-preview {
+            position: fixed;
+
+            width: min(430px, 34vw);
+            height: min(430px, 55vh);
+
+            right: 28px;
+            top: 50%;
+
+            transform: translateY(-50%) scale(.96);
+
+            z-index: 9999;
+
+            padding: 14px;
+
+            background: rgba(255, 255, 255, .97);
+            border: 1px solid var(--blue);
+            border-radius: 12px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, .28),
+                0 0 0 1px rgba(21, 71, 168, .08);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                transform .3s cubic-bezier(.2, .8, .2, 1),
+                visibility .25s ease;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* Active preview */
+
+        .home-image-preview.active {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(-50%) scale(1);
+        }
+
+
+        /* =========================================================
+   PREVIEW IMAGE
+========================================================= */
+
+        .home-image-preview-image {
+            flex: 1 1 auto;
+            min-height: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(rgba(21, 71, 168, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 71, 168, .045) 1px, transparent 1px);
+
+            background-size: 24px 24px;
+
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .home-image-preview-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 20px;
+
+            transition: transform .45s ease;
+        }
+
+
+        /* =========================================================
+   PREVIEW DETAILS
+========================================================= */
+
+        .home-image-preview-details {
+            flex: 0 0 auto;
+
+            padding: 12px 4px 2px;
+        }
+
+        .home-image-preview-number {
+            font-family: var(--mono);
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: .12em;
+
+            color: var(--orange);
+
+            margin-bottom: 4px;
+        }
+
+        .home-image-preview-category {
+            font-family: var(--mono);
+            font-size: 7px;
+
+            letter-spacing: .1em;
+            text-transform: uppercase;
+
+            color: var(--blue);
+
+            margin-bottom: 3px;
+        }
+
+        .home-image-preview-title {
+            font-family: var(--display);
+            font-size: clamp(17px, 1.5vw, 23px);
+            font-weight: 700;
+
+            line-height: 1.05;
+
+            text-transform: uppercase;
+
+            color: var(--ink);
+        }
+
+        .home-image-preview-description {
+            margin-top: 5px;
+
+            font-family: var(--sans);
+            font-size: 9px;
+
+            line-height: 1.4;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+   TECHNICAL CORNERS
+========================================================= */
+
+        .home-image-preview::before,
+        .home-image-preview::after {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            pointer-events: none;
+        }
+
+        .home-image-preview::before {
+            left: -1px;
+            top: -1px;
+
+            border-left: 2px solid var(--orange);
+            border-top: 2px solid var(--orange);
+        }
+
+        .home-image-preview::after {
+            right: -1px;
+            bottom: -1px;
+
+            border-right: 2px solid var(--orange);
+            border-bottom: 2px solid var(--orange);
+        }
+
+
+        /* =========================================================
+   MOBILE / SMALL SCREEN
+========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .home-image-preview {
+                width: 320px;
+                height: 390px;
+
+                right: 15px;
+            }
+        }
+
+
+        /* Disable floating preview on mobile */
+        @media (max-width: 860px) {
+
+            .home-image-preview {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+
+        <div class="header-inner">
+            <!-- NAVIGATION -->
+            <nav class="main-nav" aria-label="Primary navigation">
+
+                <a href="index.html" class="active">
+                    <span>HOME</span>
+                </a>
+
+                <a href="research.html">
+                    <span>RESEARCH PAPERS</span>
+                </a>
+
+                <a href="projects.html">
+                    <span>Hands-on Project</span>
+                </a>
+
+                <a href="internships.html">
+                    <span>INTERNSHIPS</span>
+                </a>
+
+                <a href="academics.html">
+                    <span>Academic Credentials</span>
+                </a>
+
+                <a href="impact.html">
+                    <span>leadership and community IMPACT</span>
+                </a>
+
+                <a href="awards.html">
+                    <span>Honors & Awards</span>
+                </a>
+
+                <a href="interests.html">
+                    <span>Interests</span>
+                </a>
+
+
+            </nav>
+
+            <!-- MOBILE MENU -->
+            <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" onclick="
+                    document.body.classList.toggle('menu-open');
+                    this.setAttribute(
+                        'aria-expanded',
+                        document.body.classList.contains('menu-open')
+                    );
+                ">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+    <div class="home-view">
+        <!-- ---------- 1. RESUME STRIP ---------- -->
+        <a class="home-resume" href="Krshay_Venkatesan_CV.pdf" target="_blank" style="text-align:left;">
+            View Full Résumé <span>→</span>
+        </a>
+        <!-- ---------- 2. HERO ---------- -->
+        <section class="home-hero">
+            <div class="home-hero-bg"></div>
+            <div class="home-hero-grid"></div>
+            <div class="home-hero-side"></div>
+
+            <div class="home-hero-content">
+                <h1><span>Krshay</span><span>Venkatesan</span></h1>
+                <div class="home-hero-rule"></div>
+                <div class="home-hero-tagline">
+                    <span>Engineering <b>( Motion )</b></span>
+                    <span>Understanding <b>( Systems )</b></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------- 3. MARQUEE ---------- -->
+        <div class="home-marquee">
+            <div class="home-marquee-track">
+                <span>ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET · SYSTEMS ·
+                    BIOMECHANICS</span>
+                <span>ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET · SYSTEMS ·
+                    BIOMECHANICS</span>
+            </div>
+        </div>
+
+        <!-- ---------- 4. SYSTEMS GRID ---------- -->
+        <section class="home-systems">
+            <div class="home-systems-head">
+                <h2>The systems <b>I work with.</b></h2>
+                <p style="color: #012161;margin-top: auto;">Motion is the thread that connects everything I do — from
+                    human joints to reactor cores.</p>
+            </div>
+
+            <div class="home-systems-grid">
+
+                <!-- =========================================================
+     HOVER IMAGE ZOOM PREVIEW
+========================================================= -->
+
+                <div class="home-image-preview" id="homeImagePreview">
+
+                    <div class="home-image-preview-image">
+                        <img id="homePreviewImage" src="" alt="">
+                    </div>
+
+                    <div class="home-image-preview-details">
+
+                        <div class="home-image-preview-number" id="homePreviewNumber">
+                            01
+                        </div>
+
+                        <div class="home-image-preview-category" id="homePreviewCategory">
+                            HUMAN / BIOMECHANICS
+                        </div>
+
+                        <div class="home-image-preview-title" id="homePreviewTitle">
+                            Human Mobility
+                        </div>
+
+                        <div class="home-image-preview-description" id="homePreviewDescription">
+                            Understanding the body to restore movement.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <a class="home-card" href="projects.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">01</span>
+                        <h3 style="margin-left: 10px;">Human Mobility</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/knee.png" alt="Human Mobility"></div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Human / Biomechanics</span>
+                    <p>Understanding the body to restore movement.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <div style="display: flex;">                        
+                        <span class="home-card-num">02</span>
+                        <h3 style="margin-left: 10px;">Energy Systems</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/reactor.png" alt="Energy Systems"></div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Energy / Systems</span>
+                    <p>Engineering sustainable energy for the future.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">03</span>
+                        <h3 style="margin-left: 10px;">Materials Mobility</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/materials.png" alt="Materials for Mobility">
+                    </div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Materials / Mobility</span>
+                    <p>Advanced composites for lighter vehicles.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">04</span>
+                        <h3 style="margin-left: 10px;">Vehicle Mobility</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/chassis.png" alt="Vehicle Mobility"></div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Automotive / Mechanical</span>
+                    <p>Designing systems that move people safely.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">05</span>
+                        <h3 style="margin-left: 10px;">Nature-Inspired</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/nature.png" alt="Nature-Inspired Engineering">
+                    </div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Biomimicry / Design</span>
+                    <p>Learning from nature's designs to solve problems.</p>
+                </a>
+
+                <a class="home-card" href="internships.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">06</span>
+                        <h3 style="margin-left: 10px;">Intelligent Systems</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/chip.png" alt="Intelligent Systems"></div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">AI / Sensors / Data</span>
+                    <p>Sensors, data and code for complex motion.</p>
+                </a>
+
+                <a class="home-card" href="interests.html">
+                    <div style="display: flex;">
+                        <span class="home-card-num">07</span>
+                        <h3 style="margin-left: 10px;">Sports Engineering</h3>
+                    </div>
+                    <div class="home-card-img"><img src="assets/drawing/sport.png" alt="Sports Engineering"></div>
+                    <span class="home-card-cat" style="font-size: 7px;font-weight: bold;">Cricket / Athletics</span>
+                    <p style="color: #000;">Engineering motion for athletes and performance.</p>
+                </a>
+
+            </div>
+        </section>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const cards = document.querySelectorAll(".home-card");
+
+            const preview = document.getElementById("homeImagePreview");
+            const previewImage = document.getElementById("homePreviewImage");
+            const previewNumber = document.getElementById("homePreviewNumber");
+            const previewCategory = document.getElementById("homePreviewCategory");
+            const previewTitle = document.getElementById("homePreviewTitle");
+            const previewDescription = document.getElementById("homePreviewDescription");
+
+
+            cards.forEach((card) => {
+
+                const image = card.querySelector("img");
+                const number = card.querySelector(".home-card-num");
+                const category = card.querySelector(".home-card-cat");
+                const title = card.querySelector("h3");
+                const description = card.querySelector("p");
+
+
+                card.addEventListener("mouseenter", () => {
+
+                    if (!image) return;
+
+                    /* Image */
+                    previewImage.src = image.src;
+                    previewImage.alt = image.alt || title?.textContent || "Preview";
+
+
+                    /* Details */
+                    previewNumber.textContent =
+                        number?.textContent.trim() || "";
+
+                    previewCategory.textContent =
+                        category?.textContent.trim() || "";
+
+                    previewTitle.textContent =
+                        title?.textContent.trim() || "";
+
+                    previewDescription.textContent =
+                        description?.textContent.trim() || "";
+
+
+                    /* Show */
+                    preview.classList.add("active");
+
+                });
+
+
+                card.addEventListener("mouseleave", () => {
+
+                    preview.classList.remove("active");
+
+                });
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+
+    <title>Academic Credentials — Krshay Venkatesan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+            --ink: #0b1728;
+            --ink-light: #14233a;
+
+            --blue: #1d4fa3;
+            --blue-bright: #3978e6;
+            --blue-soft: #edf4ff;
+
+            --orange: #e85a20;
+            --orange-soft: #fff2ea;
+
+            --paper: #f5f6f2;
+            --white: #ffffff;
+
+            --muted: #718096;
+            --line: #d3ddea;
+
+            --success: #1c8a61;
+
+            --shadow-sm:
+                0 4px 12px rgba(12, 28, 55, .05);
+
+            --shadow:
+                0 14px 35px rgba(12, 28, 55, .09);
+
+            --shadow-hover:
+                0 24px 55px rgba(12, 28, 55, .16);
+
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+
+            --radius: 18px;
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .view {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--paper);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .view-hero {
+            min-height: 150px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding:
+                clamp(22px, 3vw, 36px) clamp(20px, 4vw, 46px);
+
+            position: relative;
+            overflow: hidden;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 82% 10%,
+                    rgba(46, 109, 230, .32),
+                    transparent 35%),
+
+                radial-gradient(circle at 100% 100%,
+                    rgba(232, 90, 32, .12),
+                    transparent 30%),
+
+                linear-gradient(135deg,
+                    #07111f,
+                    #0c1a30 55%,
+                    #101e38);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, .08);
+        }
+
+        .view-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -230px;
+            top: -300px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255, 255, 255, .08);
+
+            box-shadow:
+                0 0 0 60px rgba(255, 255, 255, .015),
+                0 0 0 120px rgba(255, 255, 255, .01);
+
+            pointer-events: none;
+        }
+
+        .view-hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .view-kicker {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-family: var(--mono);
+            font-size: 9px;
+
+            letter-spacing: .2em;
+
+            text-transform: uppercase;
+
+            color: var(--orange);
+        }
+
+        .view-hero h1 {
+            font-family: var(--display);
+
+            font-size:
+                clamp(1.9rem, 4vw, 3.2rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.055em;
+
+            text-transform: uppercase;
+
+            line-height: .95;
+        }
+
+        .view-hero p {
+            max-width: 650px;
+
+            margin-top: 12px;
+
+            font-family: var(--mono);
+
+            font-size:
+                clamp(.62rem, .8vw, .78rem);
+
+            line-height: 1.7;
+
+            color:
+                rgba(255, 255, 255, .65);
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .view-back {
+            position: relative;
+            z-index: 2;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 18px;
+
+            border:
+                1px solid rgba(255, 255, 255, .25);
+
+            border-radius: 999px;
+
+            font-family: var(--mono);
+
+            font-size: 8px;
+
+            font-weight: 500;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+
+            color: white;
+
+            background:
+                rgba(255, 255, 255, .04);
+
+            backdrop-filter:
+                blur(12px);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease,
+                color .25s ease;
+        }
+
+        .view-back:hover {
+            transform: translateY(-2px);
+
+            color: var(--orange);
+
+            border-color: var(--orange);
+
+            background:
+                rgba(232, 90, 32, .08);
+        }
+
+
+        /* =====================================================
+           MAIN STAGE
+        ===================================================== */
+
+        .view-stage {
+            flex: 1;
+
+            padding:
+                clamp(16px, 2.5vw, 30px) clamp(16px, 3vw, 44px);
+
+            background:
+
+                linear-gradient(rgba(29, 79, 163, .045) 1px,
+                    transparent 1px),
+
+                linear-gradient(90deg,
+                    rgba(29, 79, 163, .045) 1px,
+                    transparent 1px),
+
+                var(--paper);
+
+            background-size:
+                30px 30px;
+        }
+
+
+        /* =====================================================
+           ACADEMIC BOARD
+        ===================================================== */
+
+        .academic-board {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            gap:
+                clamp(12px, 1.4vw, 18px);
+        }
+
+
+        /* =====================================================
+           GENERAL CARD
+        ===================================================== */
+
+        .card,
+        .coursework-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-width: 0;
+
+            background:
+
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, .98),
+                    rgba(248, 250, 253, .94));
+
+            border:
+                1px solid rgba(199, 211, 226, .95);
+
+            border-radius:
+                var(--radius);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            transition:
+
+                transform .35s cubic-bezier(.2, .8, .2, 1),
+
+                box-shadow .35s ease,
+
+                border-color .35s ease;
+        }
+
+
+        /* Premium card border */
+
+        .card::before,
+        .coursework-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            padding: 1px;
+
+            border-radius: inherit;
+
+            background:
+
+                linear-gradient(135deg,
+                    rgba(57, 120, 230, .38),
+                    transparent 45%,
+                    rgba(232, 90, 32, .22));
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity .3s ease;
+
+
+
+            -webkit-mask-composite:
+                xor;
+
+            mask-composite:
+                exclude;
+        }
+
+        .card:hover,
+        .coursework-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(57, 120, 230, .35);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+        .card:hover::before,
+        .coursework-card:hover::before {
+            opacity: 1;
+        }
+
+
+        /* =====================================================
+           TOP FEATURE CARDS
+        ===================================================== */
+
+        .test-card {
+
+            min-height: 200px;
+
+            padding:
+                clamp(16px, 1.7vw, 22px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .test-top {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .score-label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .test-card h3 {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(1.3rem, 1.4vw, 1.25rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.03em;
+
+            color: var(--ink);
+        }
+
+        .score-year {
+
+            padding: 5px 8px;
+
+            border-radius: 999px;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .08em;
+
+            color: var(--blue);
+
+            background:
+                var(--blue-soft);
+        }
+
+
+        /* =====================================================
+           MAIN SCORE FONT
+        ===================================================== */
+
+        .hero-score {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 7px;
+
+            margin-top: 14px;
+        }
+
+        .hero-score strong {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(2.8rem, 4vw, 4.4rem);
+
+            font-weight: 700;
+
+            letter-spacing:
+                -.065em;
+
+            line-height: .85;
+
+            color:
+                var(--blue);
+
+            text-shadow:
+                0 8px 20px rgba(29, 79, 163, .10);
+        }
+
+        .hero-score span {
+
+            font-family: var(--mono);
+
+            font-size:
+                clamp(.55rem, .7vw, .7rem);
+
+            color:
+                var(--muted);
+        }
+
+
+        .percentile {
+
+            margin-top: 10px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            font-weight: 500;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            color:
+                var(--orange);
+        }
+
+
+        /* =====================================================
+           SCORE FOOTER
+        ===================================================== */
+
+        .score-footer {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+            padding-top: 12px;
+
+            border-top:
+                1px solid var(--line);
+        }
+
+        .score-footer span {
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .04em;
+
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .document-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            padding:
+                7px 11px;
+
+            border:
+                1px solid rgba(29, 79, 163, .55);
+
+            border-radius:
+                999px;
+
+            font-family:
+                var(--mono);
+
+            font-size:
+                6px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                .07em;
+
+            text-transform:
+                uppercase;
+
+            white-space:
+                nowrap;
+
+            color:
+                var(--blue);
+
+            background:
+                rgba(255, 255, 255, .75);
+
+            transition:
+                all .25s ease;
+        }
+
+        .document-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            color:
+                white;
+
+            background:
+                var(--blue);
+
+            box-shadow:
+                0 8px 18px rgba(29, 79, 163, .22);
+        }
+
+
+        /* =====================================================
+           AP CARDS
+        ===================================================== */
+
+        .ap-card {
+
+            min-height: 200px;
+
+            padding:
+                clamp(16px, 1.7vw, 22px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .ap-card-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+        .ap-year {
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .09em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .ap-score {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(2rem, 2.8vw, 3rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.05em;
+
+            line-height: 1;
+
+            color: var(--blue);
+        }
+
+        .ap-card h4 {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(.9rem, 1.1vw, 1.1rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.02em;
+
+            line-height: 1.25;
+
+            color: var(--ink);
+        }
+
+        .ap-card>span {
+
+            margin-top: 8px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           AP SCHOLAR
+        ===================================================== */
+
+        .ap-card--award {
+
+            background:
+
+                linear-gradient(145deg,
+                    #fff6ef,
+                    #ffffff);
+
+            border-color:
+                rgba(232, 90, 32, .35);
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            justify-content: center;
+        }
+
+        .award-icon {
+
+            font-size:
+                1.6rem;
+
+            color:
+                var(--orange);
+
+            filter:
+                drop-shadow(0 8px 14px rgba(232, 90, 32, .18));
+        }
+
+        .ap-tag {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            color: var(--orange);
+        }
+
+        .ap-title {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(1rem, 1.3vw, 1.25rem);
+
+            font-weight: 700;
+
+            color: var(--ink);
+        }
+
+
+        /* =====================================================
+           LOWER GRID
+        ===================================================== */
+
+        .ap-grid {
+
+            grid-column:
+                1 / -1;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            gap:
+                clamp(12px, 1.4vw, 18px);
+        }
+
+
+        /* =====================================================
+           COURSEWORK CARDS
+        ===================================================== */
+
+        .coursework-card {
+
+            min-height:
+                185px;
+
+            padding:
+                clamp(16px, 1.6vw, 21px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .coursework-card small {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .09em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .coursework-card h4 {
+
+            min-height: 40px;
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(.82rem, 1vw, 1rem);
+
+            font-weight: 700;
+
+            line-height: 1.25;
+
+            letter-spacing: -.015em;
+
+            color: var(--ink);
+        }
+
+
+        /* =====================================================
+           COURSE SCORE
+        ===================================================== */
+
+        .coursework-score {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            margin-top: 16px;
+        }
+
+        .coursework-score strong {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(1.5rem, 2vw, 2.1rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.045em;
+
+            color: var(--blue);
+        }
+
+        .coursework-score span {
+
+            padding:
+                5px 8px;
+
+            border-radius:
+                999px;
+
+            font-family:
+                var(--mono);
+
+            font-size:
+                6px;
+
+            font-weight:
+                500;
+
+            color:
+                var(--orange);
+
+            background:
+                var(--orange-soft);
+        }
+
+
+        /* =====================================================
+           PROGRESS BAR
+        ===================================================== */
+
+        .coursework-bar {
+
+            height:
+                5px;
+
+            margin-top:
+                12px;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                999px;
+
+            background:
+                #e7edf5;
+        }
+
+        .coursework-bar span {
+
+            display: block;
+
+            width: 0;
+
+            height: 100%;
+
+            border-radius:
+                inherit;
+
+            background:
+
+                linear-gradient(90deg,
+                    var(--blue),
+                    var(--blue-bright));
+
+            box-shadow:
+                0 2px 8px rgba(29, 79, 163, .2);
+
+            transition:
+                width 1.4s cubic-bezier(.2, .8, .2, 1);
+        }
+
+
+        /* =====================================================
+           IGCSE SUMMARY
+        ===================================================== */
+
+        .igcse-summary {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            gap: 16px;
+
+            background:
+
+                linear-gradient(145deg,
+                    #ffffff,
+                    #f4f8ff);
+        }
+
+        .igcse-summary::before {
+
+            content:
+                "";
+
+            font-family:
+                var(--mono);
+
+            font-size:
+                7px;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                .13em;
+
+            color:
+                var(--orange);
+        }
+
+        .igcse-stat {
+
+            padding-bottom:
+                12px;
+
+            border-bottom:
+                1px dashed var(--line);
+        }
+
+        .igcse-stat:last-of-type {
+            border-bottom: none;
+        }
+
+        .igcse-stat strong {
+
+            display: block;
+
+            font-family:
+                var(--display);
+
+            font-size:
+                clamp(1.4rem, 2vw, 2rem);
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -.04em;
+
+            color:
+                var(--blue);
+        }
+
+        .igcse-stat span {
+
+            display: block;
+
+            margin-top:
+                3px;
+
+            font-family:
+                var(--mono);
+
+            font-size:
+                6px;
+
+            letter-spacing:
+                .08em;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--muted);
+        }
+
+
+        /* =====================================================
+           ANIMATION
+        ===================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(20px);
+
+            animation:
+                revealCard .65s cubic-bezier(.2, .8, .2, 1) forwards;
+        }
+
+        @keyframes revealCard {
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .view-footer {
+
+            min-height:
+                32px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
+            padding:
+                8px clamp(16px, 3vw, 44px);
+
+            background:
+                rgba(255, 255, 255, .92);
+
+            border-top:
+                1px solid var(--line);
+
+            font-family:
+                var(--mono);
+
+            font-size:
+                7px;
+
+            letter-spacing:
+                .08em;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--muted);
+        }
+
+        .view-footer-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                15px;
+
+            flex-wrap:
+                wrap;
+        }
+
+        .view-footer a {
+
+            transition:
+                color .2s ease;
+        }
+
+        .view-footer a:hover {
+
+            color:
+                var(--blue);
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .view {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .view-hero {
+            flex: 0 0 clamp(105px, 16vh, 150px);
+        }
+
+        .view-stage {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .academic-grid {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, minmax(0, 1fr));
+
+            grid-template-rows:
+                repeat(3, minmax(0, 1fr));
+
+            gap: clamp(8px, 1vw, 14px);
+        }
+
+        .course-card,
+        .score-card {
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .coursework-card {
+            position: relative;
+        }
+
+        .coursework-logo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            z-index: 5;
+        }
+
+        /* ===============================
+   GLOBAL VIEWPORT FIX
+================================ */
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .view {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            min-height: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .academic-board {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+            .ap-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .view-hero {
+
+                min-height:
+                    210px;
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                justify-content:
+                    center;
+            }
+
+            .view-hero h1 {
+
+                font-size:
+                    2.2rem;
+            }
+
+            .view-back {
+
+                padding:
+                    9px 15px;
+            }
+
+            .academic-board {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .ap-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .test-card,
+            .ap-card,
+            .coursework-card {
+
+                min-height:
+                    190px;
+            }
+
+            .view-footer {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+        }
+
+
+        @media (max-width: 520px) {
+
+            .view-stage {
+
+                padding:
+                    14px;
+            }
+
+            .academic-board,
+            .ap-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .test-card,
+            .ap-card,
+            .coursework-card {
+
+                min-height:
+                    185px;
+            }
+
+            .hero-score strong {
+
+                font-size:
+                    4rem;
+            }
+
+            .view-footer-links {
+
+                display:
+                    none;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="view">
+
+
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
+
+        <section class="view-hero">
+
+            <div class="view-hero-text">
+
+                <span class="view-kicker">
+                    03 · Academic Credentials
+                </span>
+
+                <h1>
+                    Proof of work.
+                </h1>
+
+                <p>
+                    A documented academic record across standardized testing,
+                    Cambridge examinations and advanced placement coursework.
+                </p>
+
+            </div>
+
+
+            <a class="view-back" href="index.html">
+                ← Back to foundation
+            </a>
+
+        </section>
+
+
+        <!-- =====================================================
+             ACADEMIC BOARD
+        ===================================================== -->
+
+        <main class="view-stage" style="padding: 10px 20px;">
+
+            <div class="academic-board">
+
+
+                <!-- SAT -->
+
+                <article class="card test-card reveal">
+
+                    <div>
+
+                        <div class="test-top">
+
+                            <div>
+
+                                <span class="score-label">
+                                    College Board
+                                </span>
+
+                                <h3 style="font-size: 1.5rem;">
+                                    SAT
+                                </h3>
+
+                            </div>
+
+                            <span class="score-year">
+                                2025
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-score">
+
+                            <strong class="counter" data-target="1570">
+                                1570
+                            </strong>
+
+                            <span>
+                                / 1600
+                            </span>
+
+                        </div>
+
+
+                        <div class="percentile">
+                            98% of max · 99th+ percentile
+                        </div>
+
+                    </div>
+                    <div class="score-footer" style="margin-top: 5%;">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- CALCULUS BC -->
+
+                <article class="card ap-card reveal">
+                    <div class="ap-card-top">
+                        <span class="score-label">
+                            College Board
+                        </span>
+
+                    </div>
+                    <div class="ap-card-top">
+                        <div>
+
+                            <span class="ap-year" style="color: var(--orange);">
+                                2025 · AP
+                            </span>
+                            <h4>
+                                Calculus BC
+                            </h4>
+                        </div>
+                        <strong class="ap-score" style="font-size: 1.8rem;">
+                            5
+                        </strong>
+
+                    </div>
+                    <div class="ap-card-top">
+                        <div>
+
+                            <span class="ap-year" style="color: var(--orange);">
+                                2024 · AP
+                            </span>
+                            <h4>
+                                Computer Science A
+                            </h4>
+
+                        </div>
+
+                        <strong class="ap-score" style="font-size: 1.8rem;">
+                            5
+                        </strong>
+
+                    </div>
+
+                    <div class="score-footer" style="margin-top: 0px;">
+
+                        <span>
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/AP-Score Report + Award.pdf" target="_blank"
+                            style="margin-top: -5px;">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- IGCSE SUMMARY -->
+
+                <article class="coursework-card igcse-summary reveal">
+                    <div style="margin-top: 10px;display: flex;justify-content: space-between;margin-bottom: -20px;">
+                        <span class="score-label">
+                            IGCSE
+                        </span>
+                        <span class="score-year">
+                            2025
+                        </span>
+                    </div>
+                    <div class="igcse-stat" style="display: flex;">
+
+                        <strong>
+                            9
+                        </strong>
+
+                        <span style="font-size: 12px; font-weight: 800;margin-left: auto; margin-top: 10%;">
+                            A* Grades
+                        </span>
+
+                    </div>
+
+
+                    <div class="igcse-stat">
+
+                        <strong>
+                            Distinction
+                        </strong>
+
+                        <span style="font-size: 8px; font-weight: 800;">
+                            ICE Award Result
+                        </span>
+
+                    </div>
+
+                    <div class="score-footer" style="margin-top: -9%;">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/IGCSE-9 AStars Transcript.pdf" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <article class="coursework-card reveal">
+
+                    <div>
+
+                        <div class="test-top" style="margin-top: 10px;">
+
+                            <div>
+                                <span class="score-label">
+
+                                </span>
+
+                                <h3 style="font-size: 1.5rem;">
+                                    IB
+                                </h3>
+
+                            </div>
+
+                            <span class="score-year">
+                                2027
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-score">
+
+                            <strong class="counter" data-target="44">
+
+                                44
+
+                            </strong>
+
+                            <span>
+                                / 45
+                            </span>
+
+                        </div>
+
+
+                        <div class="percentile">
+                            98% of max
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-footer">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+                <article class="coursework-card reveal">
+
+                    <div>
+
+                        <div class="test-top" style="margin-top: 10px;">
+
+                            <div>
+                                <span class="score-label">
+                                    College Board
+                                </span>
+
+                                <h3 style="font-size: 1.5rem;">
+                                    PSAT 8/9
+                                </h3>
+
+                            </div>
+
+                            <span class="score-year">
+                                2024
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-score">
+
+                            <strong class="counter" data-target="1440">
+
+                                1440
+
+                            </strong>
+
+                            <span>
+                                / 1440
+                            </span>
+
+                        </div>
+
+
+                        <div class="percentile">
+                            Perfect score · 99th+ percentile
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-footer">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- =====================================================
+                     LOWER BOARD
+                ===================================================== -->
+
+                <div class="ap-grid">
+
+                    <!-- INTERNATIONAL MATHEMATICS -->
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/stanford-university-logo.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Linear Algebra
+                            </small>
+
+                            <h4>
+                                Stanford University Online
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/Georgia-Tech-Logo.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Engineering Mechanics
+                            </small>
+
+                            <h4>
+                                Georgia Tech
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/University-Of-Michigan-Emblem.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Thermodynamics
+                            </small>
+
+                            <h4>
+                                University of Michigan
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/internship/iit_logo.jpg" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Aerospace
+                            </small>
+
+                            <h4>
+                                IIT Madras
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/udemy.jpg" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Python Bootcamp
+                            </small>
+
+                            <h4>
+                                Udemy
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- =====================================================
+             FOOTER
+        ===================================================== -->
+
+        <footer class="view-footer">
+
+            <span>
+                Krshay Venkatesan — Engineering · Motion · Systems
+            </span>
+
+
+            <span class="view-footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="research.html">
+                    Research
+                </a>
+
+                <a href="projects.html">
+                    Projects
+                </a>
+
+                <a href="internships.html">
+                    Internships
+                </a>
+
+                <a href="impact.html">
+                    Impact
+                </a>
+
+                <a href="awards.html">
+                    Awards
+                </a>
+
+            </span>
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            /* =============================================
+               REVEAL ANIMATION DELAY
+            ============================================= */
+
+            const cards =
+                document.querySelectorAll(
+                    ".reveal"
+                );
+
+
+            cards.forEach((card, index) => {
+
+                card.style.animationDelay =
+                    `${index * 0.06}s`;
+
+            });
+
+
+            /* =============================================
+               SCORE COUNTERS
+            ============================================= */
+
+            const counters =
+                document.querySelectorAll(
+                    ".counter"
+                );
+
+
+            counters.forEach(counter => {
+
+                const target =
+                    Number(
+                        counter.dataset.target
+                    );
+
+
+                const duration =
+                    1200;
+
+
+                const startTime =
+                    performance.now();
+
+
+                function updateCounter(now) {
+
+                    const progress =
+                        Math.min(
+                            (now - startTime) / duration,
+                            1
+                        );
+
+
+                    const ease =
+                        1 -
+                        Math.pow(
+                            1 - progress,
+                            3
+                        );
+
+
+                    const value =
+                        Math.floor(
+                            target * ease
+                        );
+
+
+                    counter.textContent =
+                        value.toLocaleString();
+
+
+                    if (progress < 1) {
+
+                        requestAnimationFrame(
+                            updateCounter
+                        );
+
+                    }
+
+                }
+
+
+                requestAnimationFrame(
+                    updateCounter
+                );
+
+            });
+
+
+            /* =============================================
+               PROGRESS BAR ANIMATION
+            ============================================= */
+
+            const bars =
+                document.querySelectorAll(
+                    ".coursework-bar"
+                );
+
+
+            setTimeout(() => {
+
+                bars.forEach((bar, index) => {
+
+                    const width =
+                        bar.dataset.width;
+
+                    const fill =
+                        bar.querySelector("span");
+
+
+                    setTimeout(() => {
+
+                        fill.style.width =
+                            width;
+
+                    }, index * 80);
+
+                });
+
+            }, 450);
+
+
+            /* =============================================
+               PREMIUM 3D HOVER EFFECT
+            ============================================= */
+
+            const interactiveCards =
+                document.querySelectorAll(
+                    ".card, .coursework-card"
+                );
+
+
+            interactiveCards.forEach(card => {
+
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        if (
+                            window.innerWidth < 900
+                        ) return;
+
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            (
+                                event.clientX -
+                                rect.left
+                            )
+                            /
+                            rect.width
+                            -
+                            .5;
+
+
+                        const y =
+                            (
+                                event.clientY -
+                                rect.top
+                            )
+                            /
+                            rect.height
+                            -
+                            .5;
+
+
+                        card.style.transform =
+
+                            `
+                            translateY(-7px)
+                            rotateX(${-y * 2.5}deg)
+                            rotateY(${x * 2.5}deg)
+                            `;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            });
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

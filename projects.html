@@ -1,0 +1,2987 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+
+    <title>Projects — Krshay Venkatesan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07101c;
+            --bg-soft: #0b1728;
+            --panel: rgba(13, 27, 46, .78);
+            --panel-light: rgba(20, 39, 63, .72);
+
+            --white: #f7f8f4;
+            --muted: #8c9bb0;
+
+            --blue: #3f7cff;
+            --blue-soft: #7aa2ff;
+
+            --orange: #ff7442;
+            --line: rgba(150, 180, 220, .16);
+
+            --glass: rgba(255, 255, 255, .045);
+
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--white);
+        }
+
+        body {
+            position: relative;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* =====================================================
+           MAIN VIEW
+        ===================================================== */
+
+        .view {
+            height: 100vh;
+            min-height: 620px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 75% 15%, rgba(45, 104, 230, .13), transparent 28%),
+                radial-gradient(circle at 15% 90%, rgba(255, 116, 66, .06), transparent 25%),
+                var(--bg);
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .view-header {
+            height: 54px;
+            flex: 0 0 auto;
+
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+
+            padding: 0 clamp(18px, 2.8vw, 42px);
+
+            background: rgba(7, 16, 28, .92);
+
+            border-bottom: 1px solid var(--line);
+
+            backdrop-filter: blur(18px);
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .view-brand {
+            width: 28px;
+            height: 28px;
+
+            display: grid;
+            place-items: center;
+
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: 14px;
+
+            border: 1px solid rgba(255, 255, 255, .4);
+
+            transition:
+                .25s ease;
+
+            flex: 0 0 auto;
+        }
+
+        .view-brand:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: rotate(-4deg);
+        }
+
+        .view-nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 2vw, 28px);
+
+            font-family: var(--mono);
+            font-size: 8px;
+
+            letter-spacing: .13em;
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+        .view-nav a {
+            color: rgba(255, 255, 255, .45);
+            position: relative;
+
+            transition: .25s ease;
+        }
+
+        .view-nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 1px;
+
+            background: var(--orange);
+
+            transition: width .25s ease;
+        }
+
+        .view-nav a:hover {
+            color: var(--white);
+        }
+
+        .view-nav a:hover::after,
+        .view-nav a.active::after {
+            width: 100%;
+        }
+
+        .view-nav a.active {
+            color: var(--orange);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .view-hero {
+            flex: 0 0 125px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding:
+                16px clamp(18px, 2.8vw, 42px);
+
+background:
+                radial-gradient(
+                    circle at 78% 25%,
+                    rgba(39, 96, 205, 0.32),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #07101c 0%,
+                    #0a1728 55%,
+                    #101f37 100%
+                );
+
+
+            border-bottom: 1px solid var(--line);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .view-hero::before {
+            content: "PROJECT";
+
+            position: absolute;
+
+            right: 3%;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-family: var(--display);
+
+            font-size: clamp(4rem, 9vw, 9rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.07em;
+
+            color: rgba(255, 255, 255, .025);
+
+            pointer-events: none;
+        }
+
+        .view-hero-text {
+            position: relative;
+            z-index: 1;
+
+            min-width: 0;
+        }
+
+        .view-kicker {
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 8px;
+
+            letter-spacing: .2em;
+
+            text-transform: uppercase;
+
+            color: var(--orange);
+
+            margin-bottom: 7px;
+        }
+
+        .view-hero h1 {
+            font-family: var(--display);
+
+            font-size: clamp(1.25rem, 2.2vw, 2rem);
+
+            font-weight: 700;
+
+            line-height: 1;
+
+            letter-spacing: -.04em;
+
+            text-transform: uppercase;
+        }
+
+        .hero-right {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 2.5vw, 35px);
+        }
+
+        .view-meta-boxes {
+            display: flex;
+            gap: clamp(10px, 1.5vw, 20px);
+        }
+
+        .meta-box {
+            min-width: 52px;
+        }
+
+        .meta-box span {
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+
+            margin-bottom: 3px;
+        }
+
+        .meta-box strong {
+            display: block;
+
+            font-family: var(--display);
+
+            font-size: .85rem;
+
+            color: var(--white);
+        }
+
+        .view-back {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            font-family: var(--mono);
+
+            font-size: 8px;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+
+            color: var(--white);
+
+            border: 1px solid rgba(255, 255, 255, .25);
+
+            padding: 9px 15px;
+
+            border-radius: 30px;
+
+            transition: .25s ease;
+        }
+
+        .view-back:hover {
+            color: var(--orange);
+            border-color: var(--orange);
+
+            transform: translateX(-3px);
+        }
+
+
+        /* =====================================================
+           STAGE
+        ===================================================== */
+
+        .view-stage {
+            flex: 1 1 auto;
+
+            min-height: 0;
+
+            overflow: hidden;
+
+            position: relative;
+
+            padding:
+                clamp(12px, 1.8vh, 22px) clamp(18px, 2.8vw, 42px);
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+
+            background:
+                linear-gradient(rgba(73, 122, 200, .055) 1px,
+                    transparent 1px),
+                linear-gradient(90deg,
+                    rgba(73, 122, 200, .055) 1px,
+                    transparent 1px);
+
+            background-size: 34px 34px;
+
+            animation: gridMove 25s linear infinite;
+        }
+
+        @keyframes gridMove {
+
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 34px 34px;
+            }
+
+        }
+
+
+        /* =====================================================
+           PROJECT MAIN
+        ===================================================== */
+
+        .project-main {
+            flex: 1 1 auto;
+
+            min-height: 0;
+
+            display: grid;
+
+            grid-template-columns: .82fr 1.18fr;
+
+            gap: clamp(12px, 1.8vw, 22px);
+        }
+
+
+        /* =====================================================
+           VISUAL PANEL
+        ===================================================== */
+
+        .project-visual {
+
+            position: relative;
+
+            min-height: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(42, 94, 180, .18),
+                    transparent 50%),
+                linear-gradient(145deg,
+                    rgba(15, 32, 54, .96),
+                    rgba(7, 16, 28, .98));
+
+            border:
+                1px solid rgba(105, 145, 210, .2);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, .25);
+        }
+
+        .project-visual::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, .025),
+                    transparent);
+
+            transform: translateX(-100%);
+
+            animation:
+                scan 7s infinite;
+        }
+
+        @keyframes scan {
+
+            0% {
+                transform: translateX(-100%);
+            }
+
+            55% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+
+        }
+
+        .project-visual img {
+
+            position: relative;
+            z-index: 2;
+
+            max-width: 86%;
+            max-height: 78%;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(0 20px 40px rgba(0, 0, 0, .4));
+
+            transition:
+                transform .5s ease;
+        }
+
+        .project-visual:hover img {
+
+            transform:
+                scale(1.035) translateY(-4px);
+
+        }
+
+        .visual-tag {
+
+            position: absolute;
+
+            top: 14px;
+            left: 16px;
+
+            z-index: 3;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .12em;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+        }
+
+        .visual-tag.right {
+
+            left: auto;
+            right: 16px;
+        }
+
+
+        /* =====================================================
+           VISUAL TECH POINTS
+        ===================================================== */
+
+        .visual-points {
+
+            position: absolute;
+
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+
+            z-index: 4;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .visual-points span {
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .05em;
+
+            color: rgba(255, 255, 255, .78);
+
+            background:
+                rgba(13, 30, 50, .72);
+
+            backdrop-filter:
+                blur(12px);
+
+            border:
+                1px solid rgba(255, 255, 255, .12);
+
+            padding:
+                6px 9px;
+
+            border-radius: 20px;
+
+            transition:
+                .25s ease;
+        }
+
+        .visual-points span:hover {
+
+            border-color: var(--blue);
+
+            transform:
+                translateY(-2px);
+        }
+
+        .visual-points b {
+
+            color: var(--orange);
+        }
+
+
+        /* =====================================================
+           PROJECT INFORMATION
+        ===================================================== */
+
+        .project-info {
+
+            min-height: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        /* =====================================================
+           PROJECT TABS
+        ===================================================== */
+
+        .project-tabs {
+
+            display: flex;
+
+            gap: 7px;
+
+            padding: 4px;
+
+            background:
+                rgba(255, 255, 255, .035);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 12px;
+
+            flex: 0 0 auto;
+        }
+
+        .project-tab {
+
+            flex: 1;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            padding: 8px 10px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .project-tab:hover {
+
+            color: var(--white);
+        }
+
+        .project-tab.active {
+
+            background:
+                rgba(50, 103, 210, .18);
+
+            color: var(--white);
+
+            box-shadow:
+                inset 0 0 0 1px rgba(90, 140, 255, .2);
+        }
+
+
+        /* =====================================================
+           CONTENT PANELS
+        ===================================================== */
+
+        .project-content {
+
+            flex: 1 1 auto;
+
+            min-height: 0;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .content-panel {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transform:
+                translateY(12px);
+
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+        }
+
+        .content-panel.active {
+
+            opacity: 1;
+
+            pointer-events: auto;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           INFO CARD
+        ===================================================== */
+
+        .info-block {
+
+            flex: 1 1 0;
+
+            min-height: 0;
+
+            display: flex;
+
+            gap: 16px;
+
+            align-items: flex-start;
+
+            padding:
+                clamp(13px, 1.6vw, 20px);
+
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, .055),
+                    rgba(255, 255, 255, .025));
+
+            backdrop-filter:
+                blur(16px);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 14px;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease;
+        }
+
+        .info-block:hover {
+
+            transform:
+                translateX(4px);
+
+            border-color:
+                rgba(80, 132, 255, .38);
+
+            background:
+                linear-gradient(135deg,
+                    rgba(42, 88, 160, .15),
+                    rgba(255, 255, 255, .035));
+        }
+
+        .info-number {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(1.5rem, 2vw, 2.2rem);
+
+            font-weight: 700;
+
+            line-height: 1;
+
+            color:
+                rgba(80, 125, 210, .35);
+
+            flex: 0 0 auto;
+        }
+
+        .info-label {
+
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+
+            color: var(--orange);
+
+            margin-bottom: 6px;
+        }
+
+        .info-block h3 {
+
+            font-family: var(--display);
+
+            font-size:
+                clamp(.95rem, 1.2vw, 1.15rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 7px;
+
+            color: var(--white);
+        }
+
+        .info-block p {
+
+            font-size:
+                clamp(.68rem, .85vw, .82rem);
+
+            line-height: 1.6;
+
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           SOLUTION LIST
+        ===================================================== */
+
+        .solution-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+        }
+
+        .solution-list div {
+
+            display: grid;
+
+            grid-template-columns:
+                25px auto;
+
+            gap: 8px;
+
+            align-items: start;
+        }
+
+        .solution-list span {
+
+            font-family: var(--mono);
+
+            font-size: 8px;
+
+            color: var(--orange);
+        }
+
+        .solution-list strong {
+
+            font-family: var(--display);
+
+            font-size: .82rem;
+
+            color: var(--white);
+        }
+
+        .solution-list em {
+
+            font-style: normal;
+
+            font-size: .72rem;
+
+            color: var(--muted);
+        }
+
+
+        /* =====================================================
+           PROGRESS
+        ===================================================== */
+
+        .progress-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            width: 100%;
+        }
+
+        .progress-item {
+
+            display: grid;
+
+            grid-template-columns:
+                110px 1fr 40px;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .progress-item span {
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+        }
+
+        .progress-track {
+
+            height: 5px;
+
+            background:
+                rgba(255, 255, 255, .07);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 0;
+
+            background:
+                linear-gradient(90deg,
+                    var(--blue),
+                    var(--blue-soft));
+
+            border-radius: 20px;
+
+            transition:
+                width 1s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .progress-value {
+
+            text-align: right;
+
+            color: var(--white) !important;
+        }
+
+
+        /* =====================================================
+           BOTTOM
+        ===================================================== */
+
+        .project-bottom {
+
+            flex: 0 0 auto;
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: stretch;
+        }
+
+        .validation-card {
+
+            flex: 0 0 235px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 12px 15px;
+
+            background:
+                linear-gradient(135deg,
+                    rgba(30, 73, 140, .35),
+                    rgba(12, 25, 43, .75));
+
+            border:
+                1px solid rgba(75, 130, 230, .25);
+
+            border-radius: 12px;
+
+            transition: .25s ease;
+        }
+
+        .validation-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(80, 135, 255, .5);
+        }
+
+        .validation-card span {
+
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .1em;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+        }
+
+        .validation-card h4 {
+
+            font-family: var(--display);
+
+            font-size: .85rem;
+
+            color: var(--white);
+
+            margin: 4px 0;
+        }
+
+        .validation-result strong {
+
+            font-family: var(--display);
+
+            font-size: 1.6rem;
+
+            color: var(--blue-soft);
+        }
+
+
+        /* =====================================================
+           TECH STRIP
+        ===================================================== */
+
+        .tech-strip {
+
+            flex: 1;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 8px;
+        }
+
+        .tech-card {
+
+            padding: 10px;
+
+            background:
+                rgba(255, 255, 255, .035);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 10px;
+
+            transition: .25s ease;
+        }
+
+        .tech-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                rgba(50, 100, 190, .12);
+
+            border-color:
+                rgba(70, 125, 240, .35);
+        }
+
+        .tech-card span {
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            color: var(--orange);
+        }
+
+        .tech-card strong {
+
+            display: block;
+
+            margin-top: 4px;
+
+            font-family: var(--display);
+
+            font-size: .78rem;
+
+            color: var(--white);
+        }
+
+        .tech-card small {
+
+            display: block;
+
+            margin-top: 2px;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
+
+        .project-actions {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            gap: 7px;
+        }
+
+        .project-button {
+
+            min-width: 150px;
+
+            text-align: center;
+
+            padding: 9px 13px;
+
+            border-radius: 30px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .project-button.primary {
+
+            background: var(--blue);
+
+            color: #fff;
+
+            border: 1px solid var(--blue);
+        }
+
+        .project-button.primary:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(40, 100, 255, .25);
+        }
+
+        .project-button.secondary {
+
+            border:
+                1px solid rgba(100, 150, 255, .45);
+
+            color: var(--blue-soft);
+        }
+
+        .project-button.secondary:hover {
+
+            background:
+                rgba(55, 110, 220, .12);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .view-footer {
+
+            flex: 0 0 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 clamp(18px, 2.8vw, 42px);
+
+            background:
+                rgba(6, 14, 24, .94);
+
+            border-top:
+                1px solid var(--line);
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        .view-footer-links {
+
+            display: flex;
+
+            gap: 14px;
+        }
+
+        .view-footer a {
+
+            transition: .2s ease;
+        }
+
+        .view-footer a:hover {
+
+            color: var(--orange);
+        }
+
+
+        /* =====================================================
+           REVEAL ANIMATION
+        ===================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(16px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        /* =====================================================
+   MAIN STAGE — WHITE THEME
+===================================================== */
+
+        .view-stage {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow: hidden;
+            position: relative;
+
+            padding:
+                clamp(12px, 1.8vh, 22px) clamp(18px, 2.8vw, 42px);
+
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            /* Clean white background */
+            background: #ffffff;
+
+            color: #172033;
+        }
+
+
+        /* Remove animated grid */
+        .view-stage::before {
+            display: none;
+        }
+
+
+        /* =====================================================
+   PROJECT MAIN
+===================================================== */
+
+        .project-main {
+            flex: 1 1 auto;
+            min-height: 0;
+
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+
+            gap: clamp(12px, 1.8vw, 22px);
+        }
+
+
+        /* =====================================================
+   PROJECT INFORMATION
+===================================================== */
+
+        .project-info {
+            min-height: 0;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+        /* =====================================================
+   PROJECT TABS — WHITE
+===================================================== */
+
+        .project-tabs {
+            display: flex;
+            gap: 7px;
+            padding: 4px;
+
+            background: #f5f7fa;
+
+            border: 1px solid #dce2ea;
+            border-radius: 12px;
+
+            flex: 0 0 auto;
+
+            box-shadow: 0 3px 12px rgba(20, 35, 55, .05);
+        }
+
+        .project-tab {
+            flex: 1;
+
+            border: none;
+            background: transparent;
+
+            color: #718096;
+
+            padding: 8px 10px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-family: var(--mono);
+            font-size: 7px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .project-tab:hover {
+            color: #172033;
+            background: #ffffff;
+        }
+
+        .project-tab.active {
+            background: #ffffff;
+
+            color: #2463d4;
+
+            box-shadow:
+                0 2px 8px rgba(30, 70, 120, .10),
+                inset 0 0 0 1px #d8e2f0;
+        }
+
+
+        /* =====================================================
+   CONTENT PANELS
+===================================================== */
+
+        .project-content {
+            flex: 1 1 auto;
+            min-height: 0;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-panel {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transform: translateY(12px);
+
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+        }
+
+        .content-panel.active {
+            opacity: 1;
+            pointer-events: auto;
+
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+   INFO CARDS — WHITE BOX STYLE
+===================================================== */
+
+        .info-block {
+            flex: 1 1 0;
+
+            min-height: 0;
+
+            display: flex;
+            gap: 16px;
+
+            align-items: flex-start;
+
+            padding:
+                clamp(13px, 1.6vw, 20px);
+
+            background: #ffffff;
+
+            border: 1px solid #dce2ea;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 5px 18px rgba(20, 35, 55, .06);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+        }
+
+        .info-block:hover {
+            transform: translateX(4px);
+
+            border-color: #8eb1e8;
+
+            background: #fbfdff;
+
+            box-shadow:
+                0 10px 28px rgba(30, 75, 130, .10);
+        }
+
+
+        /* =====================================================
+   NUMBER
+===================================================== */
+
+        .info-number {
+            font-family: var(--display);
+
+            font-size:
+                clamp(1.5rem, 2vw, 2.2rem);
+
+            font-weight: 700;
+
+            line-height: 1;
+
+            color: #d5dfed;
+
+            flex: 0 0 auto;
+        }
+
+
+        /* =====================================================
+   LABEL
+===================================================== */
+
+        .info-label {
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+
+            color: #e76436;
+
+            margin-bottom: 6px;
+        }
+
+
+        /* =====================================================
+   HEADINGS
+===================================================== */
+
+        .info-block h3 {
+            font-family: var(--display);
+
+            font-size:
+                clamp(.95rem, 1.2vw, 1.15rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 7px;
+
+            color: #172033;
+        }
+
+
+        /* =====================================================
+   DESCRIPTION
+===================================================== */
+
+        .info-block p {
+            font-size:
+                clamp(.68rem, .85vw, .82rem);
+
+            line-height: 1.6;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+   SOLUTION LIST
+===================================================== */
+
+        .solution-list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .solution-list div {
+            display: grid;
+
+            grid-template-columns: 25px auto;
+
+            gap: 8px;
+
+            align-items: start;
+        }
+
+        .solution-list span {
+            font-family: var(--mono);
+
+            font-size: 8px;
+
+            color: #e76436;
+        }
+
+        .solution-list strong {
+            font-family: var(--display);
+
+            font-size: .82rem;
+
+            color: #172033;
+        }
+
+        .solution-list em {
+            font-style: normal;
+
+            font-size: .72rem;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+   PROGRESS
+===================================================== */
+
+        .progress-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+
+            width: 100%;
+        }
+
+        .progress-item {
+            display: grid;
+
+            grid-template-columns:
+                110px 1fr 40px;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .progress-item span {
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            color: #718096;
+
+            text-transform: uppercase;
+        }
+
+        .progress-track {
+            height: 5px;
+
+            background: #e7ebf0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+
+            width: 0;
+
+            background:
+                linear-gradient(90deg,
+                    #3f7cff,
+                    #7aa2ff);
+
+            border-radius: 20px;
+
+            transition:
+                width 1s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .progress-value {
+            text-align: right;
+
+            color: #172033 !important;
+        }
+
+
+        /* =====================================================
+   BOTTOM — WHITE THEME
+===================================================== */
+
+        .project-bottom {
+            flex: 0 0 auto;
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: stretch;
+        }
+
+
+        /* =====================================================
+   VALIDATION CARD
+===================================================== */
+
+        .validation-card {
+            flex: 0 0 235px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 12px 15px;
+
+            background: #ffffff;
+
+            border: 1px solid #dce2ea;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 18px rgba(20, 35, 55, .06);
+
+            transition: .25s ease;
+        }
+
+        .validation-card:hover {
+            transform: translateY(-3px);
+
+            border-color: #8eb1e8;
+
+            box-shadow:
+                0 10px 25px rgba(30, 75, 130, .10);
+        }
+
+        .validation-card span {
+            display: block;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            letter-spacing: .1em;
+
+            color: #718096;
+
+            text-transform: uppercase;
+        }
+
+        .validation-card h4 {
+            font-family: var(--display);
+
+            font-size: .85rem;
+
+            color: #172033;
+
+            margin: 4px 0;
+        }
+
+        .validation-result strong {
+            font-family: var(--display);
+
+            font-size: 1.6rem;
+
+            color: #3f7cff;
+        }
+
+
+        /* =====================================================
+   TECH CARDS — WHITE
+===================================================== */
+
+        .tech-strip {
+            flex: 1;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 8px;
+        }
+
+        .tech-card {
+            padding: 10px;
+
+            background: #ffffff;
+
+            border: 1px solid #dce2ea;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 4px 14px rgba(20, 35, 55, .05);
+
+            transition: .25s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-3px);
+
+            background: #fbfdff;
+
+            border-color: #8eb1e8;
+
+            box-shadow:
+                0 8px 22px rgba(30, 75, 130, .10);
+        }
+
+        .tech-card span {
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            color: #e76436;
+        }
+
+        .tech-card strong {
+            display: block;
+
+            margin-top: 4px;
+
+            font-family: var(--display);
+
+            font-size: .78rem;
+
+            color: #172033;
+        }
+
+        .tech-card small {
+            display: block;
+
+            margin-top: 2px;
+
+            font-family: var(--mono);
+
+            font-size: 6px;
+
+            color: #718096;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+        .project-actions {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            gap: 7px;
+        }
+
+        .project-button {
+            min-width: 150px;
+
+            text-align: center;
+
+            padding: 9px 13px;
+
+            border-radius: 30px;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            transition: .25s ease;
+        }
+
+        .project-button.primary {
+            background: #3f7cff;
+
+            color: #ffffff;
+
+            border: 1px solid #3f7cff;
+        }
+
+        .project-button.primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(40, 100, 255, .20);
+        }
+
+        .project-button.secondary {
+            border: 1px solid #9ab5df;
+
+            color: #3f6fbd;
+
+            background: #ffffff;
+        }
+
+        .project-button.secondary:hover {
+            background: #f4f8ff;
+
+            border-color: #3f7cff;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+   FOOTER — WHITE THEME
+===================================================== */
+
+        .view-footer {
+            flex: 0 0 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 clamp(18px, 2.8vw, 42px);
+
+            background: #ffffff;
+
+            border-top: 1px solid #dce2ea;
+
+            font-family: var(--mono);
+
+            font-size: 7px;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            color: #718096;
+        }
+
+        .view-footer-links {
+            display: flex;
+
+            gap: 14px;
+        }
+
+        .view-footer a {
+            color: #718096;
+
+            transition: .2s ease;
+        }
+
+        .view-footer a:hover {
+            color: #e76436;
+        }
+
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow-y: auto;
+            }
+
+            .view {
+                height: auto;
+                min-height: 100vh;
+                overflow: visible;
+            }
+
+            .view-stage {
+                overflow: visible;
+                background: #ffffff;
+                padding: 14px 18px;
+            }
+
+            .project-main {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .project-visual {
+                min-height: 360px;
+            }
+
+            .project-info {
+                min-height: 480px;
+            }
+
+            .project-bottom {
+                flex-direction: column;
+            }
+
+            .validation-card {
+                flex-basis: auto;
+            }
+
+            .tech-strip {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .project-actions {
+                flex-direction: row;
+            }
+
+            .project-button {
+                flex: 1;
+            }
+
+            .view-footer {
+                height: auto;
+                min-height: 45px;
+
+                padding: 10px 18px;
+
+                flex-wrap: wrap;
+
+                gap: 8px;
+
+                background: #ffffff;
+            }
+        }
+
+
+        @media (max-width: 560px) {
+
+            .project-tabs {
+                overflow-x: auto;
+            }
+
+            .project-tab {
+                min-width: 110px;
+            }
+
+            .info-block {
+                padding: 14px;
+                gap: 10px;
+            }
+
+            .info-number {
+                font-size: 1.25rem;
+            }
+
+            .project-info {
+                min-height: 560px;
+            }
+
+            .progress-item {
+                grid-template-columns:
+                    80px 1fr 35px;
+            }
+
+            .view-footer-links {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .view-meta-boxes {
+                display: none;
+            }
+
+            .project-main {
+                grid-template-columns:
+                    .9fr 1.1fr;
+            }
+
+            .validation-card {
+                flex-basis: 190px;
+            }
+
+        }
+
+
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow-y: auto;
+            }
+
+            .view {
+
+                height: auto;
+                min-height: 100vh;
+
+                overflow: visible;
+            }
+
+            .view-header {
+
+                overflow-x: auto;
+
+                gap: 18px;
+            }
+
+            .view-nav {
+
+                flex-wrap: nowrap;
+
+                min-width: max-content;
+            }
+
+            .view-hero {
+
+                min-height: 120px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                justify-content: center;
+            }
+
+            .hero-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .view-stage {
+
+                overflow: visible;
+            }
+
+            .project-main {
+
+                grid-template-columns: 1fr;
+
+                min-height: auto;
+            }
+
+            .project-visual {
+
+                min-height: 360px;
+            }
+
+            .project-info {
+
+                min-height: 480px;
+            }
+
+            .project-bottom {
+
+                flex-direction: column;
+            }
+
+            .validation-card {
+
+                flex-basis: auto;
+            }
+
+            .tech-strip {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .project-actions {
+
+                flex-direction: row;
+            }
+
+            .project-button {
+
+                flex: 1;
+            }
+
+            .view-footer {
+
+                height: auto;
+
+                min-height: 45px;
+
+                padding: 10px 18px;
+
+                flex-wrap: wrap;
+
+                gap: 8px;
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .project-tabs {
+
+                overflow-x: auto;
+            }
+
+            .project-tab {
+
+                min-width: 110px;
+            }
+
+            .info-block {
+
+                padding: 14px;
+
+                gap: 10px;
+            }
+
+            .info-number {
+
+                font-size: 1.25rem;
+            }
+
+            .project-info {
+
+                min-height: 560px;
+            }
+
+            .progress-item {
+
+                grid-template-columns:
+                    80px 1fr 35px;
+            }
+
+            .view-footer-links {
+
+                overflow-x: auto;
+
+                flex-wrap: nowrap;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="view">
+
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="view-hero">
+
+            <div class="view-hero-text">
+
+                <span class="view-kicker" style="font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--orange);">
+                    ✦ CREST Gold Award
+                </span>
+
+                <h1>
+                    Sensor-Based ACL Rehab Knee Sleeve
+                </h1>
+
+            </div>
+
+
+            <div class="hero-right">
+
+                <div class="view-meta-boxes">
+
+                    <div class="meta-box">
+                        <span>Year</span>
+                        <strong>2025</strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Status</span>
+                        <strong>Awarded</strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Platform</span>
+                        <strong>ESP32</strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Sensors</span>
+                        <strong>IMU</strong>
+                    </div>
+
+                </div>
+
+
+                <a class="view-back" href="index.html">
+                    ← Back to foundation
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="view-stage">
+
+
+            <div class="project-main">
+
+
+                <!-- LEFT ENGINEERING VISUAL -->
+
+                <section class="project-visual reveal">
+
+                    <span class="visual-tag">
+                        Fig / 01
+                    </span>
+
+                    <span class="visual-tag right">
+                        Engineering Drawing
+                    </span>
+
+
+                    <img src="assets/drawing/knee_1.png" alt="ACL rehabilitation knee sleeve engineering drawing">
+
+
+                    <div class="visual-points">
+
+                        <span>
+                            <b>01</b> IMU — Motion sensing
+                        </span>
+
+                        <span>
+                            <b>02</b> ESP32 — Edge controller
+                        </span>
+
+                        <span>
+                            <b>03</b> Sleeve — Human interface
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- RIGHT CONTENT -->
+
+                <section class="project-info reveal">
+
+
+                    <!-- TABS -->
+
+                    <div class="project-tabs">
+
+                        <button class="project-tab active" data-tab="overview">
+                            Overview
+                        </button>
+
+                        <button class="project-tab" data-tab="engineering">
+                            Engineering
+                        </button>
+
+                        <button class="project-tab" data-tab="development">
+                            Development
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="project-content">
+
+
+                        <!-- OVERVIEW -->
+
+                        <div class="content-panel active" id="overview">
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        Executive Summary
+                                    </span>
+
+                                    <h3>
+                                        Measuring recovery through movement.
+                                    </h3>
+
+                                    <p>
+                                        An IMU-based embedded system using an
+                                        ESP32 to quantify ACL rehabilitation
+                                        recovery through objective,
+                                        data-driven movement tracking.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        The Problem
+                                    </span>
+
+                                    <h3>
+                                        From subjective assessment to data.
+                                    </h3>
+
+                                    <p>
+                                        Traditional ACL recovery tracking
+                                        depends heavily on periodic clinical
+                                        evaluation and can miss important
+                                        daily movement deviations.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    03
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        Research Objective
+                                    </span>
+
+                                    <h3>
+                                        Continuous motion intelligence.
+                                    </h3>
+
+                                    <p>
+                                        Transform wearable sensor information
+                                        into measurable indicators that help
+                                        monitor joint movement and
+                                        rehabilitation progress.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ENGINEERING -->
+
+                        <div class="content-panel" id="engineering">
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        Engineering Solution
+                                    </span>
+
+                                    <div class="solution-list">
+
+                                        <div>
+
+                                            <span>01</span>
+
+                                            <div style="display: flex;">
+                                                <strong>
+                                                    Sensor Fusion
+                                                </strong>
+
+                                                <em>
+                                                    Accelerometer and gyroscope
+                                                    data for joint movement.
+                                                </em>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>02</span>
+
+                                            <div style="display: flex;">
+                                                <strong>
+                                                    Edge Processing
+                                                </strong>
+
+                                                <em>
+                                                    ESP32-based filtering and
+                                                    embedded processing.
+                                                </em>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <span>03</span>
+
+                                            <div style="display: flex;">
+                                                <strong>
+                                                    Human-Centered Design
+                                                </strong>
+
+                                                <em>
+                                                    Wearable compression sleeve
+                                                    designed for movement.
+                                                </em>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        System Architecture
+                                    </span>
+
+                                    <h3>
+                                        Wearable → Processing → Data
+                                    </h3>
+
+                                    <p>
+                                        Sensor measurements are collected
+                                        through the wearable system,
+                                        processed on the ESP32, and converted
+                                        into useful movement information.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- DEVELOPMENT -->
+
+                        <div class="content-panel" id="development">
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    01
+                                </div>
+
+                                <div style="width:100%">
+
+                                    <span class="info-label">
+                                        Development Progress
+                                    </span>
+
+                                    <h3>
+                                        Engineering development pipeline.
+                                    </h3>
+
+
+                                    <div class="progress-list">
+
+                                        <div class="progress-item">
+
+                                            <span>
+                                                Research
+                                            </span>
+
+                                            <div class="progress-track">
+
+                                                <div class="progress-fill" data-progress="94"></div>
+
+                                            </div>
+
+                                            <span class="progress-value">
+                                                94%
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="progress-item">
+
+                                            <span>
+                                                Hardware
+                                            </span>
+
+                                            <div class="progress-track">
+
+                                                <div class="progress-fill" data-progress="88"></div>
+
+                                            </div>
+
+                                            <span class="progress-value">
+                                                88%
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="progress-item">
+
+                                            <span>
+                                                Data Analysis
+                                            </span>
+
+                                            <div class="progress-track">
+
+                                                <div class="progress-fill" data-progress="82"></div>
+
+                                            </div>
+
+                                            <span class="progress-value">
+                                                82%
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="progress-item">
+
+                                            <span>
+                                                CAD Design
+                                            </span>
+
+                                            <div class="progress-track">
+
+                                                <div class="progress-fill" data-progress="90"></div>
+
+                                            </div>
+
+                                            <span class="progress-value">
+                                                90%
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-block">
+
+                                <div class="info-number">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <span class="info-label">
+                                        Current Direction
+                                    </span>
+
+                                    <h3>
+                                        From prototype to measurable recovery.
+                                    </h3>
+
+                                    <p>
+                                        The project combines embedded
+                                        electronics, biomechanics, data
+                                        processing and wearable engineering
+                                        into a unified rehabilitation system.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- ================= BOTTOM ================= -->
+
+            <div class="project-bottom reveal">
+
+
+                <div class="validation-card">
+
+                    <div>
+
+                        <span>
+                            Academic Venue
+                        </span>
+
+                        <h4>
+                            Young Scientist Journal
+                        </h4>
+
+                        <span>
+                            Vanderbilt University
+                        </span>
+
+                    </div>
+
+
+                    <div class="validation-result">
+
+                        <strong>
+                            94%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="tech-strip">
+
+                    <div class="tech-card">
+
+                        <span>01</span>
+
+                        <strong>
+                            ESP32
+                        </strong>
+
+                        <small>
+                            Embedded controller
+                        </small>
+
+                    </div>
+
+
+                    <div class="tech-card">
+
+                        <span>02</span>
+
+                        <strong>
+                            IMU
+                        </strong>
+
+                        <small>
+                            Motion sensing
+                        </small>
+
+                    </div>
+
+
+                    <div class="tech-card">
+
+                        <span>03</span>
+
+                        <strong>
+                            Data
+                        </strong>
+
+                        <small>
+                            Movement analysis
+                        </small>
+
+                    </div>
+
+
+                    <div class="tech-card">
+
+                        <span>04</span>
+
+                        <strong>
+                            CAD
+                        </strong>
+
+                        <small>
+                            Engineering design
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-actions">
+
+                    <a href="certificate/research/Research Paper-Knee Sleeve-Crest Gold + Vanderbilt.pdf"
+                        target="_blank" class="project-button primary">
+                        ↗ Research Paper
+                    </a>
+
+
+                    <a href="certificate/project/Genwise-BioInspired Soft Robotics.jpeg" target="_blank"
+                        class="project-button secondary" style="font-size: 8px;font-weight: 700;">
+                        Gold Award Certificate
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="view-footer">
+
+            <span>
+                Krshay Venkatesan — Engineering · Motion · Systems
+            </span>
+
+
+            <span class="view-footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="research.html">Research</a>
+
+                <a href="academics.html">Academic</a>
+
+                <a href="internships.html">Internships</a>
+
+                <a href="impact.html">Impact</a>
+
+                <a href="awards.html">Awards</a>
+
+            </span>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =========================================
+           TAB SWITCHING
+        ========================================= */
+
+        const tabs = document.querySelectorAll(".project-tab");
+        const panels = document.querySelectorAll(".content-panel");
+
+
+        tabs.forEach(tab => {
+
+            tab.addEventListener("click", () => {
+
+                const target = tab.dataset.tab;
+
+
+                /* Remove active state */
+
+                tabs.forEach(item => {
+                    item.classList.remove("active");
+                });
+
+
+                panels.forEach(panel => {
+                    panel.classList.remove("active");
+                });
+
+
+                /* Add active state */
+
+                tab.classList.add("active");
+
+                document
+                    .getElementById(target)
+                    .classList
+                    .add("active");
+
+
+                /* Animate progress bars */
+
+                if (target === "development") {
+
+                    setTimeout(() => {
+
+                        document
+                            .querySelectorAll(".progress-fill")
+                            .forEach(bar => {
+
+                                bar.style.width =
+                                    bar.dataset.progress + "%";
+
+                            });
+
+                    }, 120);
+
+                }
+
+            });
+
+        });
+
+
+
+        /* =========================================
+           INITIAL PAGE REVEAL
+        ========================================= */
+
+        window.addEventListener("load", () => {
+
+            document
+                .querySelectorAll(".reveal")
+                .forEach((element, index) => {
+
+                    setTimeout(() => {
+
+                        element.classList.add("show");
+
+                    }, index * 120);
+
+                });
+
+        });
+
+
+
+        /* =========================================
+           KEYBOARD TAB NAVIGATION
+        ========================================= */
+
+        document.addEventListener("keydown", event => {
+
+            if (
+                event.key === "1"
+            ) {
+                tabs[0].click();
+            }
+
+
+            if (
+                event.key === "2"
+            ) {
+                tabs[1].click();
+            }
+
+
+            if (
+                event.key === "3"
+            ) {
+                tabs[2].click();
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

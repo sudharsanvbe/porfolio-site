@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+    <title>Impact — Krshay Venkatesan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!--
+      This page intentionally does NOT load styles.css — see the note
+      on index.html. It uses the same scoped "view-*" single-viewport
+      system as every other rebuilt page so nothing fights over
+      .site-header / .page-hero / !important rules.
+    -->
+    <style>
+        :root {
+            --ink: #0b1728;
+            --blue: #1547a8;
+            --blue2: #2b6bd8;
+            --paper: #f7f8f4;
+            --orange: #e85a20;
+            --muted: #66758a;
+            --line: #c7d3e2;
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; }
+
+        /* ===================== SHELL ===================== */
+
+        .view { height: 100vh; display: flex; flex-direction: column; }
+
+        /* ---------- HEADER ---------- */
+
+        .view-header {
+            flex: 0 0 clamp(42px, 5.6vh, 56px);
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 2.4vw, 34px);
+            padding: 0 clamp(16px, 2.6vw, 32px);
+            background: #08111e;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .view-brand {
+            width: 26px; height: 26px;
+            display: grid; place-items: center;
+            border: 1px solid rgba(255,255,255,.55);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            flex: 0 0 auto;
+            transition: .2s ease;
+        }
+        .view-brand:hover { background: var(--orange); border-color: var(--orange); }
+
+        .view-nav {
+            display: flex;
+            gap: clamp(10px, 1.7vw, 22px);
+            flex-wrap: wrap;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .view-nav a { color: rgba(255,255,255,.55); transition: color .2s ease; }
+        .view-nav a:hover { color: #fff; }
+        .view-nav a.active { color: var(--orange); }
+
+        /* ---------- TITLE STRIP ---------- */
+
+        .view-hero {
+            height: 120px;
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: clamp(10px, 1.8vh, 18px) clamp(16px, 2.6vw, 32px);
+            background: #0b1728;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .view-hero-text { min-width: 0; }
+        .view-kicker {
+            display: block;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 4px;
+        }
+        .view-hero h1 {
+            font-family: var(--display);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.01em;
+            font-size: clamp(1.15rem, 2.3vw, 1.7rem);
+            line-height: 1.05;
+        }
+        .view-hero p {
+            font-family: var(--mono);
+            font-size: 9.5px;
+            line-height: 1.55;
+            color: rgba(255,255,255,.62);
+            max-width: 560px;
+            margin-top: 5px;
+        }
+        .view-back {
+            flex: 0 0 auto;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.32);
+            padding: 7px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: .2s ease;
+        }
+        .view-back:hover { border-color: var(--orange); color: var(--orange); }
+
+        /* ---------- STAGE ---------- */
+
+        .view-stage {
+            flex: 1 1 0;
+            min-height: 0;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(21,71,168,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21,71,168,.05) 1px, transparent 1px),
+                var(--paper);
+            background-size: 32px 32px;
+            padding: clamp(12px, 2vh, 22px) clamp(16px, 2.6vw, 32px);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.4vh, 14px);
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        .view-footer {
+            flex: 0 0 clamp(24px, 3vh, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(16px, 2.6vw, 32px);
+            background: #fff;
+            border-top: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: .08em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+        .view-footer a:hover { color: var(--blue); }
+        .view-footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* ===================== PAGE CONTENT ===================== */
+
+        .impact-grid {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(12px, 1.8vw, 22px);
+            align-items: start;
+            align-content: start;
+            grid-auto-rows: max-content;
+        }
+
+        .impact-card {
+            display: flex;
+            flex-direction: column;
+            align-self: start;
+            height: fit-content;
+            min-height: 0;
+            padding: clamp(16px, 2.2vh, 26px);
+            background: rgba(255,255,255,.96);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .impact-top {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .impact-icon {
+            width: 42px; height: 42px; flex: 0 0 42px;
+            display: grid; place-items: center;
+            background: #eef4ff; border-radius: 9px; font-size: 20px;
+        }
+        .impact-top h3 {
+            font-family: var(--display);
+            font-size: clamp(1.15rem, 1.65vw, 1.45rem);
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .impact-top span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 8.5px;
+            color: var(--muted);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .impact-quote {
+            font-family: var(--display);
+            font-style: italic;
+            font-size: clamp(.92rem, 1.2vw, 1.05rem);
+            line-height: 1.45;
+            color: var(--blue);
+            border-left: 3px solid var(--orange);
+            padding: 4px 0 4px 14px;
+            margin: 10px 0;
+        }
+
+        .impact-card p {
+            font-size: clamp(.84rem, 1.02vw, .98rem);
+            line-height: 1.7;
+            color: #53657b;
+            margin-top: 10px;
+        }
+
+        .impact-stats {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(21,71,168,.12);
+            display: flex;
+            gap: clamp(18px, 2.2vw, 34px);
+        }
+        .impact-stat strong {
+            display: block;
+            font-family: var(--display);
+            font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+            color: var(--blue);
+        }
+        .impact-stat span {
+            font-family: var(--mono);
+            font-size: 7.5px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .impact-link {
+            margin-top: 10px;
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            border: 1px solid var(--blue);
+            border-radius: 20px;
+            padding: 6px 12px;
+            width: fit-content;
+            transition: .2s ease;
+        }
+        .impact-link:hover { background: var(--blue); color: #fff; }
+.view-hero {
+            flex: 0 0 125px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 130px;
+            gap: 30px;
+
+            padding:
+                16px clamp(18px, 2.8vw, 42px);
+
+background:
+                radial-gradient(
+                    circle at 78% 25%,
+                    rgba(39, 96, 205, 0.32),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #07101c 0%,
+                    #0a1728 55%,
+                    #101f37 100%
+                );
+
+
+            border-bottom: 1px solid var(--line);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .view-hero::before {
+            content: "IMPACT";
+
+            position: absolute;
+
+            right: 3%;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-family: var(--display);
+
+            font-size: clamp(4rem, 9vw, 9rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.07em;
+
+            color: rgba(255, 255, 255, .025);
+
+            pointer-events: none;
+        }
+
+        /* Content-sized cards: removes the large blank space inside both articles */
+        @media (min-width: 861px) {
+            .view-stage {
+                justify-content: flex-start;
+            }
+
+            .impact-grid {
+                flex: 0 0 auto;
+                height: auto;
+            }
+        }
+
+        /* ===================== RESPONSIVE FALLBACK ===================== */
+
+        @media (max-width: 860px) {
+            html, body { overflow-y: auto; overflow-x: hidden; }
+            .view { height: auto; min-height: 100vh; }
+            .view-stage { overflow: visible; height: auto; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .view-hero { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="view">
+
+        <div class="view-hero">
+            <div class="view-hero-text">
+                <span class="view-kicker">05 ·Leadership and Community Impact</span>
+                <h1>Build for someone else.</h1>
+                <p>Engineering that matters — for patients, students, communities and the people who use it.</p>
+            </div>
+            <a class="view-back" href="index.html">← Back to foundation</a>
+        </div>
+
+        <main class="view-stage" >
+            <div class="impact-grid" >
+
+                <article class="impact-card">
+                    <div class="impact-top" style="display: flex;">
+                            <img src="assets/logo/ReSectable.png" alt="Logo" style="max-width: 75px; height: 75px;">
+                        <div style="margin-top: 2%;">
+                            <h3>Re-Spectable</h3>
+                            <span>Founder · In partnership with VHS Chennai</span>
+                        </div>
+                    </div>
+                    <div class="impact-quote">"Turn your Hindsight into Someone else's Foresight."</div>
+                    <p>At five, a pair of glasses corrected an undiagnosed astigmatism and changed how Krshay saw the world — that clarity later shaped a student-athlete and league cricketer.</p>
+                    <p>Re-Spectable is an India-based online database connecting high-quality used glasses with those who need them most, using lensometer verification and a QR-code ledger for clinical accuracy and offline field sorting.</p>
+                    <a class="impact-link" href="https://re-spectable.org/" target="_blank">Visit Re-Spectable →</a>
+                    <br>
+                    <div class="impact-stats">
+                        <div class="impact-stat"><strong>350+</strong><span>Frames in-system</span></div>
+                        <div class="impact-stat"><strong>40+</strong><span>Eyes impacted</span></div>
+                        <div class="impact-stat"><strong>5</strong><span>Active cities</span></div>
+                    </div>
+                </article>
+
+                <article class="impact-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="impact-top"> 
+                                <img src="assets/logo/imib1.png" alt="Logo" class="coursework-logo"  style="max-width: 75px; height: 75px;">
+                            <div style="margin-top: 2%;">
+                                <h3>1M1B AppliedAI</h3>
+                                <span>Curriculum Designer & Pilot Facilitator</span>
+                            </div>
+                        </div>
+                        <img src="assets/logo/united-nations-logo.png" alt="Logo" class="coursework-logo"  style="max-width: auto; height: 85px;background: #fff;margin-top:-10px">
+                    </div>
+
+                    <p>Designed a 3-tier AI curriculum for 1M1B innovation labs across Northeast India, where only 18.5% of rural schools have internet access and 280M workers face AI-driven displacement by 2030 (McKinsey, 2023). The curriculum runs entirely in-browser using Indian datasets and embedded LLM prompts.</p>
+                    <div class="impact-quote">"Finally, a session which has helped and will be applicable in life." — Student, Young Scholar's Academy</div>
+                    <p>Piloted over two days (Jun 16–17, 2026) at Young Scholar's Academy, Bangalore, with 55 Grade 8–9 students building image-classification models to solve real community problems.</p>
+                    
+                    <div class="impact-stats">
+                        <div class="impact-stat"><strong>55</strong><span>Students reached</span></div>
+                        <div class="impact-stat"><strong>82%</strong><span>Rated 4–5/5</span></div>
+                        <div class="impact-stat"><strong>3</strong><span>Curriculum tiers</span></div>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="view-footer">
+            <span>Krshay Venkatesan — Engineering · Motion · Systems</span>
+            <span class="view-footer-links">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="academics.html">Academic</a>
+                <a href="internships.html">Internships</a>
+                <a href="awards.html">Awards</a>
+            </span>
+        </footer>
+
+    </div>
+</body>
+
+</html>

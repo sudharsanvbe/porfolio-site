@@ -1,0 +1,2636 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#08111e">
+    <title>Interests — Krshay Venkatesan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #0b1728;
+            --blue: #1547a8;
+            --blue2: #2b6bd8;
+            --paper: #f7f8f4;
+            --orange: #e85a20;
+            --muted: #66758a;   
+            --line: #c7d3e2;
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .view {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .view-header {
+            flex: 0 0 clamp(42px, 5.6vh, 56px);
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 2.4vw, 34px);
+            padding: 0 clamp(16px, 2.6vw, 32px);
+            background: #08111e;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .view-brand {
+            width: 26px;
+            height: 26px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .55);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            flex: 0 0 auto;
+            transition: .2s ease;
+        }
+
+        .view-brand:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .view-nav {
+            display: flex;
+            gap: clamp(10px, 1.7vw, 22px);
+            flex-wrap: wrap;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .view-nav a {
+            color: rgba(255, 255, 255, .55);
+            transition: color .2s ease;
+        }
+
+        .view-nav a:hover {
+            color: #fff;
+        }
+
+        .view-nav a.active {
+            color: var(--orange);
+        }
+
+        .view-hero {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: clamp(8px, 1.5vh, 14px) clamp(16px, 2.6vw, 32px);
+            background: #0b1728;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .view-hero-text {
+            min-width: 0;
+        }
+
+        .view-kicker {
+            display: block;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 3px;
+        }
+
+        .view-hero h1 {
+            font-family: var(--display);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -.01em;
+            font-size: clamp(1.05rem, 2.1vw, 1.5rem);
+            line-height: 1.05;
+        }
+
+        .view-hero p {
+            font-family: var(--mono);
+            font-size: 9px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, .6);
+            max-width: 480px;
+            margin-top: 4px;
+        }
+
+        .view-back {
+            flex: 0 0 auto;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .32);
+            padding: 6px 13px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: .2s ease;
+        }
+
+        .view-back:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .tabbar {
+            flex: 0 0 clamp(30px, 3.8vh, 38px);
+            display: flex;
+            align-items: stretch;
+            gap: 6px;
+            padding: 0 clamp(16px, 2.6vw, 32px);
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .tabbar label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 16px;
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: .2s ease;
+        }
+
+        .tabbar label:hover {
+            color: var(--blue);
+        }
+
+        .view-stage {
+            flex: 1 1 0;
+            min-height: 0;
+            overflow: hidden;
+            background: linear-gradient(rgba(21, 71, 168, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(21, 71, 168, .05) 1px, transparent 1px), var(--paper);
+            background-size: 32px 32px;
+            padding: clamp(10px, 1.7vh, 18px) clamp(16px, 2.6vw, 32px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel {
+            display: none;
+            flex: 1 1 0;
+            min-height: 0;
+            gap: clamp(10px, 1.6vw, 18px);
+        }
+
+        #t1:checked~.tabbar label[for="t1"],
+        #t2:checked~.tabbar label[for="t2"],
+        #t3:checked~.tabbar label[for="t3"],
+        #t4:checked~.tabbar label[for="t4"] {
+            color: var(--blue);
+            border-bottom-color: var(--orange);
+        }
+
+        #t1:checked~.view-stage #p1,
+        #t2:checked~.view-stage #p2,
+        #t3:checked~.view-stage #p3,
+        #t4:checked~.view-stage #p4 {
+            display: flex;
+        }
+
+        .view-footer {
+            flex: 0 0 clamp(24px, 3vh, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(16px, 2.6vw, 32px);
+            background: #fff;
+            border-top: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: .08em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .view-footer a:hover {
+            color: var(--blue);
+        }
+
+        .view-footer-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .panel-box {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: clamp(10px, 1.5vw, 16px);
+            overflow: hidden;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: clamp(12px, 1.8vw, 22px);
+            flex: 0 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .stat-tile strong {
+            display: block;
+            font-family: var(--display);
+            font-size: 1.3rem;
+            color: var(--blue);
+        }
+
+        .stat-tile span {
+            font-family: var(--mono);
+            font-size: 7.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ---------- SPORT ---------- */
+        #p1 {
+            flex-direction: column;
+        }
+
+        .sport-cols {
+            flex: 1 1 0;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: clamp(10px, 1.6vw, 18px);
+        }
+
+        .track-list {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .track-row {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 34px 1fr 90px;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .track-row:last-child {
+            border-bottom: none;
+        }
+
+        .track-year {
+            font-family: var(--mono);
+            font-size: 8px;
+            color: var(--muted);
+        }
+
+        .track-name {
+            font-family: var(--display);
+            font-size: .74rem;
+            color: var(--ink);
+        }
+
+        .track-name small {
+            display: block;
+            font-family: var(--mono);
+            font-size: 6.5px;
+            color: var(--muted);
+            text-transform: none;
+            font-weight: 400;
+        }
+
+        .medal {
+            justify-self: end;
+            font-family: var(--mono);
+            font-size: 7px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        .medal--gold {
+            background: #fff3d6;
+            color: #8a6300;
+        }
+
+        .medal--silver {
+            background: #eef1f5;
+            color: #5b6672;
+        }
+
+        .medal--national,
+        .medal--intl {
+            background: #eef4ff;
+            color: var(--blue);
+        }
+
+        .medal--belt {
+            background: #fff2e6;
+            color: var(--orange);
+        }
+
+        .sport-note h4 {
+            font-family: var(--display);
+            font-size: .82rem;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .sport-note p {
+            font-size: .68rem;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        /* ---------- BOOKS ---------- */
+        #p2 {
+            flex-direction: row;
+        }
+
+        .genre-cols {
+            flex: 1.4;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(8px, 1.2vw, 14px);
+        }
+
+        .genre-rail h4 {
+            font-family: var(--display);
+            font-size: .8rem;
+            margin-bottom: 2px;
+            color: var(--ink);
+        }
+
+        .genre-rail>span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 7px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .spine {
+            border-bottom: 1px dashed var(--line);
+            padding: 5px 0;
+        }
+
+        .spine strong {
+            display: block;
+            font-family: var(--display);
+            font-size: .68rem;
+            color: var(--ink);
+        }
+
+        .spine em {
+            font-style: normal;
+            font-family: var(--mono);
+            font-size: 6.5px;
+            color: var(--muted);
+        }
+
+        .featured-pick {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-pick>span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 7px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 4px;
+        }
+
+        .featured-pick strong {
+            display: block;
+            font-family: var(--display);
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .featured-pick em {
+            font-style: normal;
+            font-family: var(--mono);
+            font-size: 7.5px;
+            color: var(--muted);
+        }
+
+        .featured-pick h4 {
+            font-family: var(--display);
+            font-size: .78rem;
+            margin: 10px 0 4px;
+            color: var(--ink);
+        }
+
+        .featured-pick ul {
+            list-style: none;
+        }
+
+        .featured-pick li {
+            font-size: .65rem;
+            color: var(--muted);
+            line-height: 1.5;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .featured-pick li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+        }
+
+        /* ---------- TRAVEL ---------- */
+        #p3 {
+            flex-direction: column;
+        }
+
+        .route-line {
+            flex: 1 1 0;
+            min-height: 0;
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+
+        .stamp {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 12px;
+            border-left: 2px solid var(--line);
+        }
+
+        .stamp:first-child {
+            border-left: none;
+        }
+
+        .stamp.is-next {
+            border-left-color: var(--orange);
+        }
+
+        .stamp strong {
+            display: block;
+            font-family: var(--display);
+            font-size: .8rem;
+            color: var(--ink);
+            margin-bottom: 3px;
+        }
+
+        .stamp span {
+            font-family: var(--mono);
+            font-size: 7px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .travel-grid {
+            flex: 1 1 0;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: clamp(10px, 1.6vw, 18px);
+            margin-top: 10px;
+        }
+
+        .travel-note h4,
+        .travel-wishlist h4 {
+            font-family: var(--display);
+            font-size: .8rem;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .travel-note p {
+            font-size: .66rem;
+            line-height: 1.5;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .wish-row {
+            border-bottom: 1px dashed var(--line);
+            padding: 5px 0;
+        }
+
+        .wish-row strong {
+            display: block;
+            font-family: var(--display);
+            font-size: .68rem;
+            color: var(--ink);
+        }
+
+        .wish-row span {
+            font-family: var(--mono);
+            font-size: 6.5px;
+            color: var(--muted);
+        }
+
+        /* ---------- MUSIC ---------- */
+        #p4 {
+            flex-direction: row;
+        }
+
+        .mood-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mood-card h4 {
+            font-family: var(--display);
+            font-size: .9rem;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .mood-card p {
+            font-size: .7rem;
+            line-height: 1.5;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .mood-tag {
+            align-self: flex-start;
+            font-family: var(--mono);
+            font-size: 7.5px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            background: #eef4ff;
+            color: var(--blue);
+            padding: 4px 10px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .view {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .view-stage {
+                overflow: visible;
+                height: auto;
+            }
+
+            #t1:checked~.view-stage #p1,
+            #t2:checked~.view-stage #p2,
+            #t3:checked~.view-stage #p3,
+            #t4:checked~.view-stage #p4 {
+                display: flex;
+            }
+
+            .panel {
+                margin-bottom: 24px;
+            }
+
+            .sport-cols,
+            .genre-cols,
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .route-line {
+                flex-direction: column;
+            }
+
+            .stamp {
+                border-left: none;
+                border-top: 2px solid var(--line);
+                padding: 10px 0;
+            }
+
+            #p2,
+            #p4 {
+                flex-direction: column;
+            }
+
+            .view-hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tabbar {
+                display: none;
+            }
+        }
+    </style>
+    <!-- ENHANCED_INTERESTS_START -->
+
+    <style>
+        /* =========================================================
+   INTERESTS PAGE — 2026 REDESIGN OVERRIDES
+   ========================================================= */
+        :root {
+            --ink: #07111f;
+            --ink-2: #0d1b2d;
+            --blue: #1f5eff;
+            --blue2: #5b8cff;
+            --paper: #f4f6f8;
+            --surface: #ffffff;
+            --orange: #ff6b2c;
+            --muted: #718096;
+            --line: rgba(15, 33, 55, .12);
+            --shadow: 0 18px 55px rgba(14, 31, 53, .10);
+            --shadow-hover: 0 26px 70px rgba(14, 31, 53, .16);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 15%, rgba(31, 94, 255, .07), transparent 28%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 44, .06), transparent 30%),
+                var(--paper);
+        }
+
+        /* Full screen structure */
+        .view {
+            min-height: 100vh;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .view::before {
+            content: "bababa";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .32;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(31, 94, 255, .055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(31, 94, 255, .055) 1px, transparent 1px);
+            background-size: 36px 36px;
+        }
+
+        /* Hero */
+        .view-hero {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(18px, 3vh, 30px) clamp(18px, 3.2vw, 52px);
+            background:
+                radial-gradient(circle at 80% 20%, rgba(31, 94, 255, .28), transparent 35%),
+                linear-gradient(135deg, #07111f 0%, #0b1930 55%, #101d35 100%);
+        }
+
+        .view-hero::after {
+            content: "INTERESTS";
+            position: absolute;
+            right: clamp(20px, 4vw, 70px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: clamp(3rem, 9vw, 10rem);
+            letter-spacing: -.08em;
+            color: rgba(255, 255, 255, .025);
+            pointer-events: none;
+        }
+
+        .view-hero-text {
+            position: relative;
+            z-index: 1
+        }
+
+        .view-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 107, 44, .28);
+            border-radius: 999px;
+            background: rgba(255, 107, 44, .08);
+            margin-bottom: 8px;
+        }
+
+        .view-hero h1 {
+            font-size: clamp(1.45rem, 3.1vw, 2.7rem);
+            letter-spacing: -.055em;
+        }
+
+        .view-hero p {
+            max-width: 680px;
+            font-size: clamp(.65rem, 1vw, .78rem);
+            line-height: 1.75;
+        }
+
+        .view-back {
+            position: relative;
+            z-index: 1;
+            padding: 9px 17px;
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .view-back:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 107, 44, .10);
+        }
+
+        /* Modern tab navigation */
+        .tabbar {
+            flex: 0 0 auto;
+            min-height: 54px;
+            gap: 8px;
+            padding: 7px clamp(18px, 3.2vw, 52px);
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .tabbar label {
+            position: relative;
+            padding: 0 18px;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-size: 10px;
+            overflow: hidden;
+        }
+
+        .tabbar label::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(31, 94, 255, .09), rgba(255, 255, 255, .1));
+            opacity: 0;
+            transition: opacity .25s ease;
+        }
+
+        .tabbar label:hover {
+            transform: translateY(-1px);
+            color: var(--blue);
+            border-color: rgba(31, 94, 255, .12);
+            background: #fff;
+        }
+
+        .tabbar label:hover::before {
+            opacity: 1
+        }
+
+        #t1:checked~.tabbar label[for="t1"],
+        #t2:checked~.tabbar label[for="t2"],
+        #t3:checked~.tabbar label[for="t3"],
+        #t4:checked~.tabbar label[for="t4"] {
+            color: #fff;
+            border-bottom-color: transparent;
+            border-color: var(--blue);
+            background: linear-gradient(135deg, var(--blue), #1547a8);
+            box-shadow: 0 8px 20px rgba(31, 94, 255, .22);
+        }
+
+        /* Main stage */
+        .view-stage {
+            padding: clamp(14px, 2.2vh, 24px) clamp(18px, 3.2vw, 52px);
+            background: transparent;
+        }
+
+        .panel {
+            animation: panelIn .55s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        @keyframes panelIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(.99)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1)
+            }
+        }
+
+        /* Premium cards */
+        .panel-box {
+            position: relative;
+            border: 1px solid rgba(15, 33, 55, .10);
+            border-radius: 18px;
+            padding: clamp(14px, 1.8vw, 22px);
+            background: rgba(255, 255, 255, .88);
+            box-shadow: 0 8px 28px rgba(14, 31, 53, .06);
+            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+        }
+
+        .panel-box::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 2px;
+            opacity: 0;
+            background: linear-gradient(90deg, var(--blue), var(--orange));
+            transition: opacity .3s ease;
+        }
+
+        .panel-box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(31, 94, 255, .20);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .panel-box:hover::before {
+            opacity: 1
+        }
+
+        /* Stats */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .stat-tile {
+            padding: 12px 14px;
+            border: 1px solid rgba(15, 33, 55, .09);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, .72);
+            box-shadow: 0 8px 24px rgba(14, 31, 53, .04);
+            transition: transform .28s ease, border-color .28s ease;
+        }
+
+        .stat-tile:hover {
+            transform: translateY(-3px);
+            border-color: rgba(31, 94, 255, .24);
+        }
+
+        .stat-tile strong {
+            font-size: clamp(1.25rem, 2vw, 1.8rem);
+            letter-spacing: -.06em;
+        }
+
+        .stat-tile span {
+            font-size: 8px;
+            letter-spacing: .08em
+        }
+
+        /* SPORT */
+        .sport-cols {
+            grid-template-columns: minmax(0, 1.55fr) minmax(260px, .8fr)
+        }
+
+        .track-list {
+            padding: 4px 20px
+        }
+
+        .track-row {
+            position: relative;
+            grid-template-columns: 54px 1fr 110px;
+            min-height: 58px;
+            transition: padding .25s ease, background .25s ease;
+        }
+
+        .track-row::before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            width: 3px;
+            height: 0;
+            border-radius: 999px;
+            background: var(--blue);
+            transition: height .25s ease;
+        }
+
+        .track-row:hover {
+            padding-left: 8px;
+            background: linear-gradient(90deg, rgba(31, 94, 255, .055), transparent);
+        }
+
+        .track-row:hover::before {
+            height: 70%
+        }
+
+        .track-year {
+            font-size: 9px;
+            font-weight: 500
+        }
+
+        .track-name {
+            font-size: .86rem
+        }
+
+        .track-name small {
+            font-size: 7.5px;
+            margin-top: 2px
+        }
+
+        .medal {
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 10px rgba(14, 31, 53, .04);
+        }
+
+        .sport-note {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(145deg, #fff, #f4f7ff);
+        }
+
+        .sport-note h4 {
+            font-size: 1.05rem;
+            line-height: 1.2
+        }
+
+        .sport-note p {
+            font-size: .76rem;
+            line-height: 1.8
+        }
+
+        /* BOOKS */
+        #p2 {
+            align-items: stretch
+        }
+
+        .genre-cols {
+            gap: 14px
+        }
+
+        .genre-rail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .genre-rail h4 {
+            font-size: .95rem
+        }
+
+        .genre-rail>span {
+            font-size: 7.5px;
+            line-height: 1.5
+        }
+
+        .spine {
+            position: relative;
+            padding: 10px 0;
+            transition: padding .25s ease;
+        }
+
+        .spine:hover {
+            padding-left: 8px
+        }
+
+        .spine:hover::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 3px;
+            height: 18px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .spine strong {
+            font-size: .76rem
+        }
+
+        .spine em {
+            font-size: 7px
+        }
+
+        .featured-pick {
+            min-width: 250px;
+            background:
+                radial-gradient(circle at 90% 10%, rgba(31, 94, 255, .11), transparent 30%),
+                linear-gradient(145deg, #ffffff, #f7f9ff);
+        }
+
+        .featured-pick strong {
+            font-size: 1.35rem;
+            line-height: 1.15
+        }
+
+        .featured-pick li {
+            font-size: .73rem;
+            line-height: 1.75
+        }
+
+        /* TRAVEL */
+        .route-line {
+            border-radius: 18px;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .stamp {
+            position: relative;
+            padding: 20px;
+            transition: background .3s ease, transform .3s ease;
+        }
+
+        .stamp::after {
+            content: "→";
+            position: absolute;
+            right: -9px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 18px;
+            height: 18px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--blue);
+            font-size: 10px;
+        }
+
+        .stamp:last-child::after {
+            display: none
+        }
+
+        .stamp:hover {
+            background: rgba(31, 94, 255, .055);
+            transform: translateY(-2px);
+        }
+
+        .stamp strong {
+            font-size: .95rem
+        }
+
+        .stamp span {
+            font-size: 7.5px
+        }
+
+        .stamp.is-next {
+            background: linear-gradient(135deg, rgba(255, 107, 44, .08), rgba(255, 255, 255, .9));
+        }
+
+        .travel-note p {
+            font-size: .74rem;
+            line-height: 1.8
+        }
+
+        .wish-row {
+            padding: 11px 0;
+            transition: padding .25s ease;
+        }
+
+        .wish-row:hover {
+            padding-left: 8px
+        }
+
+        .wish-row strong {
+            font-size: .78rem
+        }
+
+        .wish-row span {
+            font-size: 7px
+        }
+
+        /* MUSIC */
+        #p4 {
+            gap: 16px
+        }
+
+        .mood-card {
+            min-height: 220px;
+            overflow: hidden;
+        }
+
+        .mood-card::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -40px;
+            bottom: -40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(31, 94, 255, .12), transparent 65%);
+            transition: transform .45s ease;
+        }
+
+        .mood-card:hover::after {
+            transform: scale(1.6)
+        }
+
+        .mood-card h4 {
+            font-size: 1.2rem
+        }
+
+        .mood-card p {
+            font-size: .78rem;
+            line-height: 1.75
+        }
+
+        .mood-tag {
+            padding: 6px 12px;
+            border: 1px solid rgba(31, 94, 255, .12);
+        }
+
+        /* Footer */
+        .view-footer {
+            min-height: 38px;
+            padding: 0 clamp(18px, 3.2vw, 52px);
+            background: rgba(255, 255, 255, .82);
+            backdrop-filter: blur(14px);
+        }
+
+        .view-footer a {
+            position: relative;
+            transition: color .2s ease;
+        }
+
+        .view-footer a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1px;
+            background: var(--blue);
+            transition: width .25s ease;
+        }
+
+        .view-footer a:hover::after {
+            width: 100%
+        }
+
+
+        /* =========================
+   BOX BOARD — SAME STYLE AS ACADEMIC PAGE
+========================= */
+        .view-stage {
+            min-height: 0;
+            overflow: hidden;
+            padding: 12px 24px;
+            background:
+                linear-gradient(rgba(21, 71, 168, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 71, 168, .045) 1px, transparent 1px),
+                var(--paper);
+            background-size: 28px 28px;
+        }
+
+        .panel {
+            width: 100%;
+            height: 100%;
+        }
+
+        #p1 {
+            flex-direction: column;
+        }
+
+        .sport-cols {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .sport-cols>.track-list {
+            grid-column: 1 / 6;
+            grid-row: 1 / 3;
+        }
+
+        .sport-cols>.sport-note {
+            grid-column: 5;
+            grid-row: 1 / 3;
+        }
+
+        .track-list {
+            min-width: 0;
+            min-height: 0;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .track-row {
+            position: relative;
+            min-width: 0;
+            min-height: 1px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            padding: 11px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 3px 12px rgba(11, 23, 40, .035);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .track-row::before {
+            display: none;
+        }
+
+        .track-row:hover {
+            padding: 11px;
+            background: #fff;
+            transform: translateY(-3px);
+            border-color: rgba(31, 94, 255, .25);
+            box-shadow: 0 9px 22px rgba(11, 23, 40, .08);
+        }
+
+        .track-year {
+            order: 0;
+            font-family: var(--mono);
+            font-size: 6px;
+            letter-spacing: .08em;
+            color: var(--muted);
+        }
+
+        .track-name {
+            order: 1;
+            min-width: 0;
+            font-family: var(--display);
+            font-size: .68rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--ink);
+        }
+
+        .track-name small {
+            display: block;
+            margin-top: 4px;
+            font-family: var(--mono);
+            font-size: 5.7px;
+            line-height: 1.35;
+            color: var(--muted);
+        }
+
+        .medal {
+            order: 2;
+            align-self: flex-start;
+            width: fit-content;
+            margin-top: 3px;
+            padding: 3px 6px;
+            border: 1px solid rgba(31, 94, 255, .12);
+            border-radius: 12px;
+            font-family: var(--mono);
+            font-size: 5.5px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            box-shadow: none;
+        }
+
+        .sport-note {
+            min-width: 0;
+            min-height: 0;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 3px 12px rgba(11, 23, 40, .035);
+        }
+
+        .sport-note::before {
+            content: "SPORT PROFILE";
+            display: block;
+            margin-bottom: 7px;
+            font-family: var(--mono);
+            font-size: 6px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--orange);
+        }
+
+        .sport-note h4 {
+            margin-bottom: 7px;
+            font-family: var(--display);
+            font-size: .78rem;
+            line-height: 1.2;
+            color: var(--ink);
+        }
+
+        .sport-note p {
+            font-size: .57rem;
+            line-height: 1.55;
+            color: var(--muted);
+        }
+
+        /* Make the tabbed experience use the same compact cards when a
+   future Books / Travel / Music panel is added. */
+        .genre-rail,
+        .featured-pick,
+        .stamp,
+        .travel-note,
+        .wish-row,
+        .mood-card {
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 3px 12px rgba(11, 23, 40, .035);
+        }
+
+        @media(max-height:760px) and (min-width:861px) {
+            .view-stage {
+                padding: 9px 18px
+            }
+
+            .sport-cols {
+                gap: 7px
+            }
+
+            .track-list {
+                gap: 7px;
+                padding: 7px
+            }
+
+            .track-row {
+                padding: 8px
+            }
+
+            .track-row:hover {
+                padding: 8px
+            }
+
+            .sport-note {
+                padding: 10px
+            }
+        }
+
+        /* Responsive */
+        @media(max-width:1050px) {
+            .stat-row {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .sport-cols {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-rows: auto;
+            }
+
+            .sport-cols>.track-list {
+                grid-column: 1 / 3;
+                grid-row: auto;
+            }
+
+            .sport-cols>.sport-note {
+                grid-column: 3;
+                grid-row: auto;
+            }
+
+            .track-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:860px) {
+
+            html,
+            body {
+                overflow: auto
+            }
+
+            .view {
+                height: auto;
+                overflow: visible
+            }
+
+            .view::before {
+                position: fixed
+            }
+
+            .view-hero {
+                padding: 24px 20px
+            }
+
+            .view-stage {
+                padding: 12px 16px;
+                overflow: visible
+            }
+
+            .panel {
+                height: auto
+            }
+
+            .tabbar {
+                display: flex;
+                overflow-x: auto;
+                padding: 7px 12px;
+                scrollbar-width: none;
+            }
+
+            .tabbar::-webkit-scrollbar {
+                display: none
+            }
+
+            .tabbar label {
+                flex: 0 0 auto;
+                min-height: 40px
+            }
+
+            .panel {
+                display: none !important;
+                margin-bottom: 0
+            }
+
+            #t1:checked~.view-stage #p1,
+            #t2:checked~.view-stage #p2,
+            #t3:checked~.view-stage #p3,
+            #t4:checked~.view-stage #p4 {
+                display: flex !important
+            }
+
+            .sport-cols {
+                height: auto;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .sport-cols>.track-list {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+
+            .sport-cols>.sport-note {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+
+            .track-list {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .track-row {
+                min-height: 125px;
+            }
+
+            .genre-cols,
+            .travel-grid {
+                grid-template-columns: 1fr
+            }
+
+            #p2,
+            #p4 {
+                flex-direction: column
+            }
+
+            .route-line {
+                flex-direction: column
+            }
+
+            .stamp {
+                border-left: none;
+                border-top: 1px solid var(--line)
+            }
+
+            .stamp:first-child {
+                border-top: none
+            }
+
+            .stamp::after {
+                content: "↓";
+                left: 50%;
+                right: auto;
+                top: auto;
+                bottom: -9px;
+                transform: translateX(-50%);
+            }
+
+            .track-row {
+                grid-template-columns: 45px 1fr 90px
+            }
+
+            .view-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 14px 18px;
+            }
+        }
+
+        @media(max-width:560px) {
+            .sport-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .sport-cols>.track-list,
+            .sport-cols>.sport-note {
+                grid-column: 1;
+            }
+
+            .track-list {
+                grid-template-columns: 1fr;
+            }
+
+            .track-row {
+                min-height: 105px;
+            }
+
+            .stat-row {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .track-list {
+                padding: 4px 12px
+            }
+
+            .track-row {
+                grid-template-columns: 40px 1fr
+            }
+
+            .medal {
+                grid-column: 2;
+                justify-self: start;
+                margin-bottom: 7px
+            }
+
+            .view-hero h1 {
+                font-size: 1.7rem
+            }
+
+            .view-back {
+                width: 100%;
+                text-align: center
+            }
+
+            .view-footer-links {
+                gap: 10px
+            }
+        }
+
+        /* Reduced motion */
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+
+    <!-- ENHANCED_INTERESTS_END -->
+
+    <style>
+        /* =========================================================
+   FINAL FIX — SPORTS 4 x 2 BOX GRID + TAB BUG FIX
+   ========================================================= */
+
+        /* Only the selected tab is visible. This fixes the bug where
+   clicking Books could still leave the Sports/Awards cards visible. */
+        .view-stage>.panel {
+            display: none !important;
+        }
+
+        #t1:checked~.view-stage #p1,
+        #t2:checked~.view-stage #p2,
+        #t3:checked~.view-stage #p3,
+        #t4:checked~.view-stage #p4 {
+            display: flex !important;
+        }
+
+        /* Sports = exactly 4 boxes on row 1 + 4 boxes on row 2. */
+        #p1 {
+            flex-direction: column !important;
+            min-height: 0;
+            width: 100%;
+        }
+
+        #p1 .sport-cols {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            display: grid !important;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        /* Let the 8 award rows become direct grid items. */
+        #p1 .track-list {
+            display: contents !important;
+        }
+
+        #p1 .track-row {
+            min-width: 0;
+            min-height: 0;
+            height: auto;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: center !important;
+            gap: 7px;
+            padding: 14px;
+            border: 1px solid var(--line) !important;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 3px 12px rgba(11, 23, 40, .035);
+            overflow: hidden;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+
+        #p1 .track-row:last-child {
+            border-bottom: 1px solid var(--line) !important;
+        }
+
+        #p1 .track-row:hover {
+            transform: translateY(-3px);
+            border-color: rgba(31, 94, 255, .25) !important;
+            box-shadow: 0 10px 24px rgba(11, 23, 40, .09);
+        }
+
+        #p1 .track-year {
+            order: 1;
+            font-family: var(--mono);
+            font-size: 7px;
+            letter-spacing: .08em;
+            color: var(--muted);
+        }
+
+        #p1 .track-name {
+            order: 2;
+            width: 100%;
+            min-width: 0;
+            font-family: var(--display);
+            font-size: .75rem;
+            font-weight: 700;
+            line-height: 1.22;
+            color: var(--ink);
+        }
+
+        #p1 .track-name small {
+            display: block;
+            margin-top: 5px;
+            font-family: var(--mono);
+            font-size: 6px;
+            line-height: 1.4;
+            color: var(--muted);
+        }
+
+        #p1 .medal {
+            order: 3;
+            align-self: flex-start;
+            margin: 1px 0 0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-family: var(--mono);
+            font-size: 6px;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        /* The profile text is intentionally hidden on the sports board so
+   the 8 award boxes remain a clean 4 x 2 layout. */
+        #p1 .sport-note {
+            display: none !important;
+        }
+
+        /* Books / Travel / Music retain the same visual box language. */
+        #p2 .genre-rail,
+        #p2 .featured-pick,
+        #p3 .stat-tile,
+        #p3 .route-line,
+        #p3 .travel-note,
+        #p3 .travel-wishlist,
+        #p4 .mood-card {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 3px 12px rgba(11, 23, 40, .035);
+        }
+
+        /* =========================================
+   PREMIUM SPORTS SECTION
+========================================= */
+
+        .sports-grid {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: clamp(14px, 1.4vw, 22px);
+            padding: clamp(10px, 1.2vh, 18px);
+        }
+
+
+        /* =========================================
+   SPORTS CARD
+========================================= */
+
+        .sport-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            min-width: 0;
+            min-height: 0;
+
+            padding: clamp(20px, 2vw, 30px);
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.98),
+                    rgba(244, 247, 252, 0.92));
+
+            border: 1px solid rgba(120, 145, 180, 0.22);
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 25px rgba(20, 40, 75, 0.06),
+                0 2px 6px rgba(20, 40, 75, 0.04);
+
+            transition:
+                transform 0.35s cubic-bezier(.2, .8, .2, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+
+        /* Decorative corner */
+
+        .sport-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            top: -90px;
+            right: -70px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(43, 107, 216, 0.13),
+                    transparent 68%);
+
+            pointer-events: none;
+
+            transition:
+                transform 0.5s ease,
+                opacity 0.4s ease;
+        }
+
+
+        /* Bottom highlight */
+
+        .sport-card::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 3px;
+
+            background:
+                linear-gradient(90deg,
+                    #e85a20,
+                    #2b6bd8,
+                    transparent);
+
+            transform: scaleX(0);
+            transform-origin: left;
+
+            transition: transform 0.4s ease;
+        }
+
+
+        /* =========================================
+   HOVER EFFECT
+========================================= */
+
+        .sport-card:hover {
+            z-index: 5;
+
+            border-color:
+                rgba(43, 107, 216, 0.35);
+
+            box-shadow:
+                0 24px 55px rgba(20, 45, 85, 0.15),
+                0 5px 15px rgba(20, 45, 85, 0.08);
+        }
+
+        .sport-card:hover::before {
+            transform: scale(1.3);
+        }
+
+        .sport-card:hover::after {
+            transform: scaleX(1);
+        }
+
+
+        /* =========================================
+   YEAR
+========================================= */
+
+        .sport-year {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+
+            width: fit-content;
+
+            font-family: var(--mono);
+
+            font-size: clamp(0.7rem, 0.8vw, 0.82rem);
+            font-weight: 600;
+
+            letter-spacing: 0.16em;
+
+            color: #607087;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+   SPORT TITLE
+========================================= */
+
+        .sport-card h3 {
+            position: relative;
+
+            margin-top: auto;
+            margin-bottom: 10px;
+
+            font-family: var(--display);
+
+            font-size: clamp(1rem, 1.25vw, 1.35rem);
+
+            font-weight: 700;
+
+            line-height: 1.25;
+
+            letter-spacing: -0.025em;
+
+            color: #15243a;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .sport-card:hover h3 {
+            color: #1547a8;
+        }
+
+
+        /* =========================================
+   DESCRIPTION
+========================================= */
+
+        .sport-card .sport-desc {
+            position: relative;
+
+            font-family: var(--sans);
+
+            font-size: clamp(0.72rem, 0.82vw, 0.88rem);
+
+            font-weight: 500;
+
+            line-height: 1.55;
+
+            color: #718096;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================
+   ACHIEVEMENT BADGE
+========================================= */
+
+        .sport-badge {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+
+            width: fit-content;
+
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            font-family: var(--mono);
+
+            font-size: clamp(0.58rem, 0.65vw, 0.7rem);
+
+            font-weight: 600;
+
+            letter-spacing: 0.09em;
+
+            text-transform: uppercase;
+
+            background:
+                linear-gradient(135deg,
+                    #eef4ff,
+                    #f8fbff);
+
+            color: #2358b5;
+
+            border:
+                1px solid rgba(43, 107, 216, 0.16);
+
+            box-shadow:
+                0 5px 12px rgba(43, 107, 216, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .sport-card:hover .sport-badge {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 22px rgba(43, 107, 216, 0.15);
+        }
+
+
+        /* =========================================
+   SPECIAL BADGE COLORS
+========================================= */
+
+        .sport-badge.gold {
+            background:
+                linear-gradient(135deg,
+                    #fff8df,
+                    #fffdf4);
+
+            color: #9a6b00;
+
+            border-color:
+                rgba(205, 158, 34, 0.25);
+        }
+
+
+        .sport-badge.silver {
+            background:
+                linear-gradient(135deg,
+                    #f0f3f7,
+                    #ffffff);
+
+            color: #64748b;
+        }
+
+
+        .sport-badge.national {
+            background:
+                linear-gradient(135deg,
+                    #eef4ff,
+                    #f8fbff);
+
+            color: #1d4fa8;
+        }
+
+
+        .sport-badge.blackbelt {
+            background:
+                linear-gradient(135deg,
+                    #1b2635,
+                    #2a3748);
+
+            color: #ffffff;
+
+            border-color:
+                rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* =========================================
+   CARD ENTRANCE ANIMATION
+========================================= */
+
+        .sport-card {
+            opacity: 0;
+
+            animation:
+                sportCardReveal 0.7s cubic-bezier(.2, .8, .2, 1) forwards;
+        }
+
+
+        .sport-card:nth-child(1) {
+            animation-delay: .05s;
+        }
+
+        .sport-card:nth-child(2) {
+            animation-delay: .1s;
+        }
+
+        .sport-card:nth-child(3) {
+            animation-delay: .15s;
+        }
+
+        .sport-card:nth-child(4) {
+            animation-delay: .2s;
+        }
+
+        .sport-card:nth-child(5) {
+            animation-delay: .25s;
+        }
+
+        .sport-card:nth-child(6) {
+            animation-delay: .3s;
+        }
+
+        .sport-card:nth-child(7) {
+            animation-delay: .35s;
+        }
+
+        .sport-card:nth-child(8) {
+            animation-delay: .4s;
+        }
+
+
+        @keyframes sportCardReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px) scale(.97);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+        @media (max-width: 900px) {
+
+            .sports-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .sports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sport-card {
+                min-height: 180px;
+            }
+
+        }
+
+        @media (max-height:760px) and (min-width:861px) {
+            #p1 .sport-cols {
+                gap: 8px
+            }
+
+            #p1 .track-row {
+                padding: 10px;
+                gap: 5px
+            }
+
+            #p1 .track-name {
+                font-size: .68rem
+            }
+
+            #p1 .track-name small {
+                font-size: 5.5px
+            }
+        }
+
+        @media (max-width:860px) {
+
+            /* Keep the tab system working on mobile too. */
+            .view-stage>.panel {
+                display: none !important
+            }
+
+            #t1:checked~.view-stage #p1,
+            #t2:checked~.view-stage #p2,
+            #t3:checked~.view-stage #p3,
+            #t4:checked~.view-stage #p4 {
+                display: flex !important
+            }
+
+            #p1 .sport-cols {
+                height: auto;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: none;
+                grid-auto-rows: minmax(125px, auto);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width:560px) {
+            #p1 .sport-cols {
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(115px, auto);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="view">
+
+        <input type="radio" name="tabs" id="t1" checked style="display:none">
+        <input type="radio" name="tabs" id="t2" style="display:none">
+        <input type="radio" name="tabs" id="t3" style="display:none">
+        <input type="radio" name="tabs" id="t4" style="display:none">
+
+
+        <div class="view-hero">
+            <div class="view-hero-text">
+                <span class="view-kicker">08 · Interests</span>
+                <h1>Off the clock.</h1>
+                <p>Four things that run in the background — a track record, a shelf of mentors on paper, a passport just
+                    getting started, and the playlist before the start line.</p>
+            </div>
+            <a class="view-back" href="index.html">← Back to foundation</a>
+        </div>
+
+        <div class="tabbar">
+            <label for="t1">🏃 Sports</label>
+            <label for="t2">📖 Books</label>
+            <label for="t3">🧭 Travel</label>
+            <label for="t4">🎧 Music</label>
+        </div>
+
+        <main class="view-stage">
+
+            <div class="panel" id="p1" style="display: none;">
+
+                <div class="sport-cols">
+                    <div class="track-list">
+                        <article class="sport-card">
+
+                            <span class="sport-year">2024</span>
+
+                            <div>
+                                <h3>ISF World Schools Championship</h3>
+
+                                <p class="sport-desc">
+                                    International school sports competition
+                                </p>
+
+                                <span class="sport-badge national">
+                                    International
+                                </span>
+                            </div>
+
+                        </article>
+                        <article class="sport-card">
+
+                            <h3>ISSO 3000m</h3>
+                            
+                            <div style="display: flex;">
+                                <div>
+                                    <span class="sport-year">2024</span>
+    
+                                    <p class="sport-desc">
+                                        School Sports Organisation
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge national" style="margin-left: 10%;height: 50%;">
+                                    Finalist
+                                </span>
+                            </div>
+                            <div style="display: flex;">
+                                <div>
+                                    <span class="sport-year">2025</span>
+    
+                                    <p class="sport-desc">
+                                        School Sports Organisation
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge gold" style="margin-left: 10%; height: 50%;">
+                                    Gold
+                                </span>
+                            </div>
+
+
+                        </article>
+                        <article class="sport-card">
+
+                            <h3>SGFI Nationals</h3>
+                            
+                            <div style="display: flex;">
+                                <div>
+                                    <span class="sport-year">2024</span>
+    
+                                    <p class="sport-desc">
+                                        School Games Federation of India
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge national" style="margin-left: 10%; height: 50%;">
+                                    National
+                                </span>
+                            </div>
+                            <div style="display: flex;">
+                                <div>
+                                    <span class="sport-year">2025</span>
+    
+                                    <p class="sport-desc">
+                                        School Games Federation of India
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge national" style="margin-left: 10%; height: 50%;">
+                                    National
+                                </span>
+                            </div>
+                        </article>
+                        <article class="sport-card">
+
+                            <span class="sport-year">2025</span>
+<br>
+                            <div style="display: flex;">
+                                <div>
+                                    <h3>ISSO 800m</h3>
+    
+                                    <p class="sport-desc">
+                                        School Sports Organisation
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge silver" style="margin-left: 10%; height: 50%;">
+                                    Silver
+                                </span>
+                            </div>
+                            <div style="display: flex;">
+                                <div>
+                                    <h3>ISSO 1500m</h3>
+    
+                                    <p class="sport-desc">
+                                        School Sports Organisation
+                                    </p>
+                                </div>
+
+                                <span class="sport-badge gold" style="margin-left: 10%; height: 50%;">
+                                    Gold
+                                </span>
+                            </div>
+                        </article>
+                        <article class="sport-card">
+<span class="sport-year">-</span>
+
+                            <div>
+                                <h3>Karate</h3>
+
+                                <p class="sport-desc">
+                                    Black belt, 1st Dan Certification
+                                </p>
+
+                                <span class="sport-badge belt">
+                                    Black belt
+                                </span>
+                            </div>
+
+
+                        </article>
+                        
+                        <article class="sport-card">
+                            <h3>Cricket</h3>
+                                <p class="sport-desc">
+                                    ● Tamil Nadu U14 & U16 State Probables
+                                </p>
+                                <p class="sport-desc">
+                                    ● TNCA 4th Division League
+                                </p>
+                                <p class="sport-desc">
+                                    ● Winner of multiple POTM and tournament MVP awards
+                                </p>
+                           
+                        </article>
+                        <article class="sport-card">
+
+                            
+                        </article>
+                        <article class="sport-card">
+                            
+                            
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel" id="p2">
+                <div class="genre-cols">
+                    <div class="panel-box genre-rail">
+                        <h4>Mystery</h4><span>Learning to ask better questions</span>
+                        <div class="spine"><strong>The Da Vinci Code</strong><em>Dan Brown</em></div>
+                        <div class="spine"><strong>The Hunt for Red October</strong><em>Tom Clancy</em></div>
+                        <div class="spine"><strong>Sherlock Holmes</strong><em>Arthur Conan Doyle</em></div>
+                        <div class="spine" style="border-bottom:none;"><strong>Murder on the Orient
+                                Express</strong><em>Agatha Christie</em></div>
+                    </div>
+                    <div class="panel-box genre-rail">
+                        <h4>World Wars</h4><span>Understanding strategy under uncertainty</span>
+                        <div class="spine"><strong>The Rise and Fall of the Third Reich</strong><em>William L.
+                                Shirer</em></div>
+                        <div class="spine"><strong>Band of Brothers</strong><em>Stephen E. Ambrose</em></div>
+                        <div class="spine"><strong>The Second World War</strong><em>Antony Beevor</em></div>
+                        <div class="spine" style="border-bottom:none;"><strong>Churchill: A Life</strong><em>Martin
+                                Gilbert</em></div>
+                    </div>
+                    <div class="panel-box genre-rail">
+                        <h4>Sports biographies</h4><span>Studying the habits behind excellence</span>
+                        <div class="spine"><strong>Playing It My Way</strong><em>Sachin Tendulkar</em></div>
+                        <div class="spine"><strong>No Spin</strong><em>Shane Warne</em></div>
+                        <div class="spine"><strong>The Test of My Life</strong><em>Yuvraj Singh</em></div>
+                        <div class="spine" style="border-bottom:none;"><strong>MS Dhoni: The Untold
+                                Story</strong><em>Unauthorised biography</em></div>
+                    </div>
+                </div>
+                <div class="panel-box featured-pick">
+                    <span>Mystery · Featured Pick</span>
+                    <strong>The Hunt for Red October</strong>
+                    <em>Tom Clancy</em>
+                    <h4>Why it stuck</h4>
+                    <ul>
+                        <li>Information is power, but clarity is more powerful.</li>
+                        <li>Small decisions, made early, change the outcome.</li>
+                        <li>Stay calm — systems fail when people panic.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel" id="p3">
+                <div class="stat-row">
+                    <div class="stat-tile"><strong>1</strong><span>Country via sport</span></div>
+                    <div class="stat-tile"><strong>Multiple</strong><span>Indian cities for Nationals</span></div>
+                    <div class="stat-tile"><strong>Open</strong><span>Next stamp: TBD</span></div>
+                </div>
+                <div class="panel-box route-line">
+                    <div class="stamp"><strong>Home base</strong><span>Where the 5 AM training starts</span></div>
+                    <div class="stamp"><strong>National circuit</strong><span>SGFI & ISSO Nationals, city to city across
+                            India</span></div>
+                    <div class="stamp"><strong>Manama, Bahrain</strong><span>ISF World Schools Championship, 2024</span>
+                    </div>
+                    <div class="stamp is-next"><strong>Next stop: TBD</strong><span>Wherever the next start line
+                            is</span></div>
+                </div>
+                <div class="travel-grid">
+                    <div class="panel-box travel-note">
+                        <h4>What travel means, so far</h4>
+                        <p>Travel has mostly happened through sport — a passport that fills up one start line at a time.
+                            Bahrain was the first stamp from competing rather than sightseeing, and it changed how
+                            travel is thought of: not a break from training, but an extension of it.</p>
+                        <p>Every Nationals trip adds a city, a new track, a new crowd — comparing notes with competitors
+                            from other states.</p>
+                    </div>
+                    <div class="panel-box travel-wishlist">
+                        <h4>On the radar</h4>
+                        <div class="wish-row"><strong>Next international meet</strong><span>Wherever selection takes
+                                me</span></div>
+                        <div class="wish-row"><strong>A university campus visit</strong><span>Once shortlisting
+                                begins</span></div>
+                        <div class="wish-row" style="border-bottom:none;"><strong>A sports-science lab
+                                tour</strong><span>Somewhere that studies motion the way I do</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" id="p4">
+                <div class="panel-box mood-card">
+                    <h4>Warm-up</h4>
+                    <p>High-tempo, low-thinking. Just enough noise to stop overthinking the race.</p>
+                    <span class="mood-tag">High Energy</span>
+                </div>
+                <div class="panel-box mood-card">
+                    <h4>Lock-in</h4>
+                    <p>Instrumental, steady, repetitive — the same three or four tracks on loop while a problem set or a
+                        strategy sheet gets solved.</p>
+                    <span class="mood-tag">Focus</span>
+                </div>
+                <div class="panel-box mood-card">
+                    <h4>Cool down</h4>
+                    <p>Slower, quieter, mostly acoustic. What's on after the session, once the adrenaline drops.</p>
+                    <span class="mood-tag">Wind Down</span>
+                </div>
+            </div>
+
+
+        </main>
+
+        <footer class="view-footer">
+            <span>Krshay Venkatesan — Engineering · Motion · Systems</span>
+            <span class="view-footer-links">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
+                <a href="academics.html">Academic</a>
+                <a href="impact.html">Impact</a>
+                <a href="awards.html">Awards</a>
+            </span>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const radios = [...document.querySelectorAll('input[name="tabs"]')];
+            const labels = [...document.querySelectorAll('.tabbar label')];
+            const panels = [...document.querySelectorAll('.panel')];
+
+            // Animated tab transitions
+            radios.forEach((radio, index) => {
+                radio.addEventListener('change', () => {
+                    if (!radio.checked) return;
+
+                    const activePanel = panels[index];
+                    panels.forEach(panel => {
+                        panel.style.display = 'none';
+                        panel.style.animation = 'none';
+                    });
+
+                    if (!activePanel) return;
+
+                    activePanel.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        activePanel.style.animation = 'panelIn .55s cubic-bezier(.2,.8,.2,1) both';
+                    });
+
+                    labels[index].scrollIntoView({
+                        behavior: 'smooth',
+                        inline: 'center',
+                        block: 'nearest'
+                    });
+
+                    animateCounters(activePanel);
+                    activateTimeline(activePanel);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (event) => {
+                if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+
+                const current = radios.findIndex(r => r.checked);
+                let next = current;
+
+                if (event.key === 'ArrowRight') next = (current + 1) % radios.length;
+                if (event.key === 'ArrowLeft') next = (current - 1 + radios.length) % radios.length;
+
+                radios[next].checked = true;
+                radios[next].dispatchEvent(new Event('change'));
+                labels[next].focus?.();
+            });
+
+            // Counter animation
+            function animateCounters(scope = document) {
+                const counters = [...scope.querySelectorAll('.stat-tile strong')];
+
+                counters.forEach(counter => {
+                    const original = counter.dataset.original || counter.textContent.trim();
+                    counter.dataset.original = original;
+
+                    const numberMatch = original.match(/^\d+/);
+                    if (!numberMatch) return;
+
+                    const target = Number(numberMatch[0]);
+                    const suffix = original.slice(numberMatch[0].length);
+                    const duration = 700;
+                    const start = performance.now();
+
+                    const update = (now) => {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.round(target * eased) + suffix;
+
+                        if (progress < 1) requestAnimationFrame(update);
+                        else counter.textContent = original;
+                    };
+
+                    counter.textContent = '0' + suffix;
+                    requestAnimationFrame(update);
+                });
+            }
+
+            // Interactive timeline hover sequence
+            function activateTimeline(scope = document) {
+                const rows = [...scope.querySelectorAll('.track-row')];
+                rows.forEach((row, i) => {
+                    row.style.transitionDelay = `${Math.min(i * 25, 150)}ms`;
+                });
+            }
+
+            // Initial load animation
+            const initialPanel = panels.find(panel => panel.offsetParent !== null) || panels[0];
+            animateCounters(initialPanel);
+            activateTimeline(initialPanel);
+
+            // Card pointer micro interaction on larger screens
+            document.querySelectorAll('.panel-box').forEach(card => {
+                card.addEventListener('mousemove', (event) => {
+                    if (window.innerWidth < 900) return;
+                    const rect = card.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width - .5;
+                    const y = (event.clientY - rect.top) / rect.height - .5;
+                    card.style.transform = `translateY(-4px) rotateX(${(-y * 1.2).toFixed(2)}deg) rotateY(${(x * 1.2).toFixed(2)}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
