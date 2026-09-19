@@ -200,18 +200,14 @@
             padding:
                 16px clamp(18px, 2.8vw, 42px);
 
-background:
-                radial-gradient(
-                    circle at 78% 25%,
+            background:
+                radial-gradient(circle at 78% 25%,
                     rgba(39, 96, 205, 0.32),
-                    transparent 28%
-                ),
-                linear-gradient(
-                    135deg,
+                    transparent 28%),
+                linear-gradient(135deg,
                     #07101c 0%,
                     #0a1728 55%,
-                    #101f37 100%
-                );
+                    #101f37 100%);
 
 
             border-bottom: 1px solid var(--line);
@@ -1033,7 +1029,7 @@ background:
 
             font-family: var(--mono);
 
-            font-size: 6px;
+            font-size: 8px;
 
             letter-spacing: .1em;
 
@@ -1159,61 +1155,8 @@ background:
             gap: 7px;
         }
 
-        .project-button {
+        
 
-            min-width: 150px;
-
-            text-align: center;
-
-            padding: 9px 13px;
-
-            border-radius: 30px;
-
-            font-family: var(--mono);
-
-            font-size: 7px;
-
-            letter-spacing: .08em;
-
-            text-transform: uppercase;
-
-            transition: .25s ease;
-        }
-
-        .project-button.primary {
-
-            background: var(--blue);
-
-            color: #fff;
-
-            border: 1px solid var(--blue);
-        }
-
-        .project-button.primary:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 10px 25px rgba(40, 100, 255, .25);
-        }
-
-        .project-button.secondary {
-
-            border:
-                1px solid rgba(100, 150, 255, .45);
-
-            color: var(--blue-soft);
-        }
-
-        .project-button.secondary:hover {
-
-            background:
-                rgba(55, 110, 220, .12);
-
-            transform:
-                translateY(-2px);
-        }
 
 
         /* =====================================================
@@ -1734,7 +1677,7 @@ background:
 
             font-family: var(--mono);
 
-            font-size: 6px;
+            font-size: 7px;
 
             letter-spacing: .1em;
 
@@ -1806,7 +1749,7 @@ background:
         .tech-card span {
             font-family: var(--mono);
 
-            font-size: 7px;
+            font-size: 8px;
 
             color: #e76436;
         }
@@ -1887,21 +1830,7 @@ background:
                 0 10px 25px rgba(40, 100, 255, .20);
         }
 
-        .project-button.secondary {
-            border: 1px solid #9ab5df;
 
-            color: #3f6fbd;
-
-            background: #ffffff;
-        }
-
-        .project-button.secondary:hover {
-            background: #f4f8ff;
-
-            border-color: #3f7cff;
-
-            transform: translateY(-2px);
-        }
 
 
         /* =====================================================
@@ -1949,6 +1878,17 @@ background:
 
         .view-footer a:hover {
             color: #e76436;
+        }
+
+        .research-logo {
+            position: absolute;
+            max-width: 70px;
+            max-height: 70px;
+            z-index: 10;
+            background: #f8fbfd;
+            padding: 3px;
+            border-radius: 4px;
+            object-fit: contain;
         }
 
         @media (max-width: 860px) {
@@ -2227,6 +2167,79 @@ background:
             }
 
         }
+
+
+
+
+        /* =====================================================
+           FINAL VISUAL FIX — YST LOGO INSIDE DRAWING PANEL
+        ===================================================== */
+        .project-visual {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .drawing-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .knee-drawing {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform .5s cubic-bezier(.2, .8, .2, 1), filter .3s ease;
+        }
+
+        .research-logo-badge {
+            position: absolute !important;
+            top: 48px !important;
+            right: 18px !important;
+            width: 64px !important;
+            height: 64px !important;
+            padding: 6px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 20 !important;
+            background: rgba(255, 255, 255, .96) !important;
+            border: 1px solid rgba(185, 200, 220, .9) !important;
+            border-radius: 11px !important;
+            box-shadow: 0 10px 24px rgba(8, 17, 30, .22), 0 0 0 1px rgba(21, 71, 168, .08) !important;
+            backdrop-filter: blur(8px);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .research-logo-badge img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            object-fit: contain !important;
+        }
+
+        .project-visual:hover .research-logo-badge {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 14px 30px rgba(8, 17, 30, .25), 0 0 0 2px rgba(63, 124, 255, .12) !important;
+        }
+
+        @media (max-width: 560px) {
+            .research-logo-badge {
+                top: 44px !important;
+                right: 12px !important;
+                width: 54px !important;
+                height: 54px !important;
+                padding: 5px !important;
+            }
+        }
     </style>
 </head>
 
@@ -2243,8 +2256,9 @@ background:
 
             <div class="view-hero-text">
 
-                <span class="view-kicker" style="font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--orange);">
-                    ✦ CREST Gold Award
+                <span class="view-kicker"
+                    style="font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--orange);">
+                    ✦ Hand On Projects
                 </span>
 
                 <h1>
@@ -2301,37 +2315,30 @@ background:
 
                 <!-- LEFT ENGINEERING VISUAL -->
 
-                <section class="project-visual reveal">
+                <div class="project-visual">
 
-                    <span class="visual-tag">
-                        Fig / 01
-                    </span>
+                    <span class="visual-tag">FIG / 01</span>
+                    <span class="visual-tag right">ENGINEERING DRAWING</span>
 
-                    <span class="visual-tag right">
-                        Engineering Drawing
-                    </span>
-
-
-                    <img src="assets/drawing/knee_1.png" alt="ACL rehabilitation knee sleeve engineering drawing">
-
-
-                    <div class="visual-points">
-
-                        <span>
-                            <b>01</b> IMU — Motion sensing
-                        </span>
-
-                        <span>
-                            <b>02</b> ESP32 — Edge controller
-                        </span>
-
-                        <span>
-                            <b>03</b> Sleeve — Human interface
-                        </span>
-
+                    <!-- YST Logo Overlay -->
+                    <div class="research-logo-badge">
+                        <img src="assets/logo/YST-Logo-1.webp" alt="Young Scientist Award Logo">
                     </div>
 
-                </section>
+                    <!-- Engineering Drawing -->
+                    <div class="drawing-frame">
+                        <img src="assets/drawing/knee_1.png" alt="ACL rehabilitation knee sleeve engineering drawing"
+                            class="knee-drawing">
+                    </div>
+
+                    <!-- Image Points -->
+                    <div class="visual-points">
+                        <span><b>01</b> IMU — Motion sensing</span>
+                        <span><b>02</b> ESP32 — Edge controller</span>
+                        <span><b>03</b> Sleeve — Human interface</span>
+                    </div>
+
+                </div>
 
 
 
@@ -2717,7 +2724,6 @@ background:
                 <div class="validation-card">
 
                     <div>
-
                         <span>
                             Academic Venue
                         </span>
@@ -2726,19 +2732,22 @@ background:
                             Young Scientist Journal
                         </h4>
 
-                        <span>
-                            Vanderbilt University
-                        </span>
+
 
                     </div>
 
 
-                    <div class="validation-result">
+                    <div class="validation-result" style="margin-right:0%;">
 
-                        <strong>
+                        <strong style="margin-left:30%;">
                             94%
                         </strong>
 
+
+                        <a href="certificate/research/Research Paper-Knee Sleeve-Crest Gold + Vanderbilt.pdf"
+                            target="_blank" style="font-size: 10px; font-weight: 700; color: var(--orange);background: #fdf8f5; padding: 4px 6px; border-radius: 4px; border: 1px solid #f5e0d9;">
+                            Research Paper
+                        </a>
                     </div>
 
                 </div>
@@ -2755,7 +2764,7 @@ background:
                             ESP32
                         </strong>
 
-                        <small>
+                        <small style="font-size: 7px;font-weight: 600;">
                             Embedded controller
                         </small>
 
@@ -2770,7 +2779,7 @@ background:
                             IMU
                         </strong>
 
-                        <small>
+                        <small style="font-size: 7px;font-weight: 600;">
                             Motion sensing
                         </small>
 
@@ -2785,7 +2794,7 @@ background:
                             Data
                         </strong>
 
-                        <small>
+                        <small style="font-size: 7px;font-weight: 600;">
                             Movement analysis
                         </small>
 
@@ -2800,7 +2809,7 @@ background:
                             CAD
                         </strong>
 
-                        <small>
+                        <small style="font-size: 7px;font-weight: 600;">
                             Engineering design
                         </small>
 
@@ -2812,16 +2821,17 @@ background:
 
                 <div class="project-actions">
 
-                    <a href="certificate/research/Research Paper-Knee Sleeve-Crest Gold + Vanderbilt.pdf"
-                        target="_blank" class="project-button primary">
-                        ↗ Research Paper
-                    </a>
+                    <div class="tech-card"
+                        style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; height: 100%;background: var(--orange); border: 1px solid #f5e0d9; box-shadow: 0 4px 14px rgba(20, 35, 55, .05);">
+                        <a href="certificate/project/Genwise-BioInspired Soft Robotics.jpeg" target="_blank"
+                            class="project-button secondary" style="font-size: 12px;font-weight: 700;color: #fff;font-family: var(--display);">
+                            CREST GOLD AWARD <br>
+                            Certificate
+                        </a>
 
 
-                    <a href="certificate/project/Genwise-BioInspired Soft Robotics.jpeg" target="_blank"
-                        class="project-button secondary" style="font-size: 8px;font-weight: 700;">
-                        Gold Award Certificate
-                    </a>
+
+                    </div>
 
                 </div>
 
